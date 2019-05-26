@@ -1,0 +1,25 @@
+.pop-up {
+    top: 0;
+    right: 70%;
+    height: 0;
+    background-color: rgba(0, 0, 0, 0.808);
+    display: none;
+    position: absolute !important;
+    padding-left: 100%;
+    padding-right: 90%;
+    padding-top: 25%;
+    padding-bottom: 100%;
+    pointer-events: all;
+}
+input[type=button], input[type=submit]{
+    position:relative;
+     width:100px;
+     height:40px;
+     border-radius:20px;
+     margin-top:5px;
+     margin-bottom:5px;
+     border:0px;
+     background-color: rgb(29, 119, 129);
+     font: 14px normal normal uppercase helvetica, arial, serif;
+     padding:2px;
+}
