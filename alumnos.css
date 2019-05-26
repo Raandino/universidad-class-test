@@ -1,0 +1,194 @@
+*{
+    margin:0;
+    padding: 0;
+    
+ }
+ 
+ 
+ #container{
+     display: flex;
+ 
+ }
+ select {
+     width: 100%;
+ }
+ 
+ 
+ #main{ 
+     background-color:rgb(21, 32, 43);
+     width: 90%;
+     padding-bottom: 100vh;
+     display: flex;
+     justify-content: space-between;
+     padding: 50px 20% 0 20%;
+ }
+ 
+ 
+ .sidebar{
+     min-width: 150px;
+     width: 10%;
+     height: 100vh;
+     background: rgb(46, 59, 73);
+     list-style: none;
+     color: white;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     padding-top: 25px;
+   
+ }
+
+ .sidebar li {
+     padding-top: 6%;
+     height: 5%;
+     width: 100%;
+     text-align: center;
+     background-color:  rgb(46, 59, 73);
+ }
+ .sidebar li:hover{
+    background-color: rgb(41, 158, 173);
+ }
+
+ 
+
+ 
+ .contenedor-tabla{
+     display: flex;
+     flex-direction: column;
+     text-align: center;
+ }
+ 
+ .contenedor-tabla h2{
+     color: white;
+     margin-bottom: 20px;
+ }
+ 
+ .fondo{
+     background-color:rgb(21, 32, 43);
+     border: 5px solid #000;
+     width: 80%;
+     margin-left: auto;
+     margin-right:auto;
+     height: 1000px;
+     
+ }
+ #h1conf{
+     margin: auto;
+     text-align: center;
+     padding-bottom: 10px;
+ }
+ 
+ input[type="submit"]{
+     position:relative;
+     width:150px;
+     height:40px;
+     border-radius:20px;
+     margin-left: center;
+     border:0px;
+     background-color:rgb(41, 158, 173);
+     font: 14px normal normal uppercase helvetica, arial, serif;
+ }
+ 
+ p{
+     text-shadow:0 1px 0 #fff;
+     font-size:24px;
+     margin: 0;
+ }
+ 
+ .form{
+     color: white;
+     background: rgb(46, 59, 73);
+     margin-left: 50px;
+    
+     padding: 30px;
+     text-align: center;
+     border : 5px solid #000;
+     width:250px;
+     height: 5  00px;
+  
+ }
+ 
+ .tabla{
+     color:white;
+     border:1px solid;
+     width:500px;
+ }
+ td{
+     text-align: center;
+     border: 1px solid;
+     font: 18px normal normal uppercase helvetica, arial, serif;
+ }
+ 
+ .btcolor{
+     
+     width:70px;
+     height:40px;
+     border-radius:20px;
+     margin: 2px;
+     border:0px;
+     background-color:rgb(29, 119, 129);
+     font: 4px normal normal uppercase helvetica, arial, serif;
+ }
+ .btcolor:hover{
+     background-color: #ffff
+ }
+ 
+ button {
+     position:relative;
+     width:100px;
+     height:40px;
+     border-radius:20px;
+     margin-top:5px;
+     margin-bottom:5px;
+     border:0px;
+     background-color: rgb(29, 119, 129);
+     font: 14px normal normal uppercase helvetica, arial, serif;
+     padding:2px;
+ }
+ a{
+     color:white;
+     font: 14px normal normal uppercase helvetica, arial, serif;
+     
+ }
+
+ td{
+     padding: 5px;
+ }
+ td:hover{
+     color:rgb(29, 119, 129);
+ }
+.menu{
+    color:white;
+     font: 16px normal normal uppercase helvetica, arial, serif;
+}
+
+.mainh2{
+    color: white;
+    margin-bottom: 10%;
+}
+
+ #btn-createDB{
+    color: white;
+    padding-left: 25px;
+    padding-right: 25px;
+    
+    
+ }
+#main-repair{
+    text-align:center;
+    height:auto;
+}
+
+#overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+  }
