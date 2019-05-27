@@ -9,7 +9,7 @@
 <body>
     
     <form action="Login/login.php">
-    <h1>FUNCIONANDO</h1>
+    <h1>NEPE</h1>
     <td colspan="2" align="center"><input type="submit" name="enviando" id="enviando" value="entar"></td>
     </form>
    
