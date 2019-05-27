@@ -8,9 +8,9 @@
 </head>
 <body>
     
-    <form action="creardb.php">
+    <form action="Login/login.php">
     <h1>ESTA FUNCIONANDO EL TUANI</h1>
-    <td colspan="2" align="center"><input type="submit" name="enviando" id="enviando" value="Crear tablas"></td>
+    <td colspan="2" align="center"><input type="submit" name="enviando" id="enviando" value="entar"></td>
     </form>
    
 </body>
