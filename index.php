@@ -8,9 +8,9 @@
 </head>
 <body>
     
-    <form action="creardb.php">
+    <form action="conexion.php">
     <h1>ESTA FUNCIONANDO</h1>
-    <td colspan="2" align="center"><input type="submit" name="enviando" id="enviando" value="Crear db"></td>
+    <td colspan="2" align="center"><input type="submit" name="enviando" id="enviando" value="Conectar"></td>
     </form>
    
 </body>
