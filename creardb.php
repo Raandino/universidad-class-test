@@ -1,6 +1,6 @@
 <?php
 
-$link = mysqli_connect("localhost:3307", "root", "");
+$link = mysqli_connect("us-cdbr-iron-east-02.cleardb.net:3306", "baaa99915d8ee8", "9aaeb95d");
  
 // Check connection
 if($link === false){
@@ -15,7 +15,7 @@ if(mysqli_query($link, $base)){
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
 
-$conn = mysqli_connect("localhost:3307", "root", "", "universidad");
+$conn = mysqli_connect("us-cdbr-iron-east-02.cleardb.net", "baaa99915d8ee8", "9aaeb95d", "universidad");
 
 //tabla facultades
 $facultades= "CREATE table if not exists facultades(
