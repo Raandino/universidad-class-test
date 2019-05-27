@@ -9,8 +9,8 @@
 <body>
     
     <form action="conexion.php">
-    <h1>ESTA FUNCIONANDO probando</h1>
-    <td colspan="2" align="center"><input type="submit" name="enviando" id="enviando" value="Conectar"></td>
+    <h1>ESTA FUNCIONANDO EL TUANI</h1>
+    <td colspan="2" align="center"><input type="submit" name="enviando" id="enviando" value="Crear tablas"></td>
     </form>
    
 </body>

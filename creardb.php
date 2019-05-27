@@ -6,7 +6,8 @@ $link = mysqli_connect("us-cdbr-iron-east-02.cleardb.net:336", "baaa99915d8ee8",
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
- 
+
+/* 
 //creacion base de datos
 $base = "CREATE DATABASE IF NOT EXISTS universidad";
 if(mysqli_query($link, $base)){
@@ -14,8 +15,9 @@ if(mysqli_query($link, $base)){
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
+*/
 
-$conn = mysqli_connect("us-cdbr-iron-east-02.cleardb.net:3306", "baaa99915d8ee8", "9aaeb95d", "universidad");
+$conn = mysqli_connect("us-cdbr-iron-east-02.cleardb.net:3306", "baaa99915d8ee8", "9aaeb95d", "heroku_a9b4f5dbca572c4");
 
 
 //tabla facultades
