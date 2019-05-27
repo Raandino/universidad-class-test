@@ -1,6 +1,6 @@
 <?php
 
-	$servername = "us-cdbr-iron-east-02.cleardb.net";
+	$servername = "us-cdbr-iron-east-02.cleardb.net:3306";
 	$username = "baaa99915d8ee8";
 	$password = "9aaeb95d";
 	
@@ -14,7 +14,7 @@
 	}
 
 	
-	$conexion=mysqli_connect($servername,$username,$password,'universidad');
+	$conexion=mysqli_connect($servername,$username,$password,'heroku_a9b4f5dbca572c4');
 
 
 	
