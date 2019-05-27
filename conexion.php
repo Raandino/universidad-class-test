@@ -1,8 +1,8 @@
 <?php
 
-	$servername = "localhost:3307";
-	$username = "root";
-	$password = "";
+	$servername = "us-cdbr-iron-east-02.cleardb.net:3306";
+	$username = "baaa99915d8ee8";
+	$password = "9aaeb95d";
 	
 
 	// Create connection
