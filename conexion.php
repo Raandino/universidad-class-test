@@ -12,7 +12,7 @@
 	if ($conn->connect_error) {
     		die("Connection failed: " . $conn->connect_error);
 	}else{
-		echo "<h1>SOS LA MERA YUCA</h1>"
+		echo "<h1>SOS LA MERA YUCA</h1>";
 	}
 
 	
