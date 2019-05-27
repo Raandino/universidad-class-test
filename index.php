@@ -8,7 +8,10 @@
 </head>
 <body>
     
-
+    <form action="Login/login.php">
     <h1>ESTA FUNCIONANDO</h1>
+    <td colspan="2" align="center"><input type="submit" name="enviando" id="enviando" value="Enviar"></td>
+    </form>
+   
 </body>
 </html>
