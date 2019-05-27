@@ -8,7 +8,7 @@
 </head>
 <body>
     
-    <form action="conexion.php">
+    <form action="creardb.php">
     <h1>ESTA FUNCIONANDO EL TUANI</h1>
     <td colspan="2" align="center"><input type="submit" name="enviando" id="enviando" value="Crear tablas"></td>
     </form>
