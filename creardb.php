@@ -347,7 +347,8 @@ if (mysqli_query($conn, $coord)) {
           echo "Error al crear la tabla: " . mysqli_error($conn);
       }  
 
-       header("Location: http://localhost:8080/formulario/Login/login.php");
+        echo "se supone que se creo";
+       ///header("Location: http://localhost:8080/formulario/Login/login.php");
 
  
 // Close connection
