@@ -45,7 +45,7 @@
 
             <div class="pop-up">
 							<div >
-							<p>Contraseña o Usuario Incorrectos</p>
+							<p>Contraseña o sss Incorrectos</p>
 							<input class="pop-up-cancel" type="button" value="Confirmar">
 							</div>
 						</div> 
