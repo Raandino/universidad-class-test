@@ -24,7 +24,7 @@ include('../../conexion.php');
 
 	//verificamos la ejecucion
 	if (mysqli_query($conexion, $horario) && mysqli_query($conexion, $materiasdocentes) ){
-		header("Location: http://localhost:8080/formulario/admin/horarioMaterias/materias.php");
+		header("Location: https://universidad-class-test.herokuapp.com//admin/horarioMaterias/materias.php");
 			
 	}
 	else{

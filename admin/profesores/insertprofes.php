@@ -10,11 +10,11 @@ include('../../conexion.php');
 	$sql="INSERT INTO docentes VALUES('$iddocente','$nombre','$apellido')";
 	//verificamos la ejecucion
 	if(mysqli_query($conexion, $sql)){
-		header("Location: http://localhost:8080/formulario/admin/profesores/profesores.php");
+		header("Location: https://universidad-class-test.herokuapp.com//admin/profesores/profesores.php");
 			
 	}
 	else{
-		header("Location: http://localhost:8080/formulario/admin/profesores/profesores.php");
+		header("Location: https://universidad-class-test.herokuapp.com//admin/profesores/profesores.php");
 	
 		
 	}

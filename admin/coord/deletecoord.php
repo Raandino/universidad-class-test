@@ -11,7 +11,7 @@ $data = mysqli_query($conexion, $query);
 if($data)
 {
    
-    header("Location: http://localhost:8080/formulario/admin/coord/coord.php");
+    header("Location: https://universidad-class-test.herokuapp.com//admin/coord/coord.php");
 }
 else 
 {

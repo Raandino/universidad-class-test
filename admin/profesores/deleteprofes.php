@@ -8,7 +8,7 @@ $data = mysqli_query($conexion, $query);
 if($data)
 {
    
-    header("Location: http://localhost:8080/formulario/admin/profesores/profesores.php");
+    header("Location: https://universidad-class-test.herokuapp.com//admin/profesores/profesores.php");
 }
 else 
 {

@@ -38,7 +38,7 @@ include('../../conexion.php');
 			$sql="INSERT INTO materias_alumnos(idmateria, idalumno, idgrupo) VALUES('$idmateria','$idalumno','$grupo')";
 			//verificamos la ejecucion
 			if(mysqli_query($conexion, $sql)){
-				header("Location: http://localhost:8080/formulario/admin/matricula/matricula.php");
+				header("Location: https://universidad-class-test.herokuapp.com//admin/matricula/matricula.php");
 					
 			}
 			else{

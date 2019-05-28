@@ -18,7 +18,7 @@ $array = mysqli_fetch_array($consulta);
 
 if($array['contar']>0){
     $_SESSION['usuario'] = $usuario; //nuevo
-    header("Location:http://localhost:8080/formulario/admin/main/main.php");
+    header("Location:https://universidad-class-test.herokuapp.com//admin/main/main.php");
     
 }
 
@@ -29,7 +29,7 @@ $array = mysqli_fetch_array($consulta);
 
 if($array['contar']>0){
     $_SESSION['usuario'] = $usuario; //nuevo
-    header("Location:http://localhost:8080/formulario/LoginAlumnos/mainalumnos.php");
+    header("Location:https://universidad-class-test.herokuapp.com//LoginAlumnos/mainalumnos.php");
     
 }
 
@@ -40,7 +40,7 @@ $array = mysqli_fetch_array($consulta);
 
 if($array['contar']>0){
     $_SESSION['usuario'] = $usuario; //nuevo
-    header("Location:http://localhost:8080/formulario/LoginDocente/maindocentes.php");
+    header("Location:https://universidad-class-test.herokuapp.com//LoginDocente/maindocentes.php");
     
 }
 
@@ -51,10 +51,10 @@ $array = mysqli_fetch_array($consulta);
 
 if($array['contar']>0){
     $_SESSION['usuario'] = $usuario; //nuevo
-    header("Location:http://localhost:8080/formulario/Coordinador/main/maincoor.php");
+    header("Location:https://universidad-class-test.herokuapp.com//Coordinador/main/maincoor.php");
     
 }{
-    //header("Location:http://localhost:8080/formulario/Login/login.php");
+    //header("Location:https://universidad-class-test.herokuapp.com//Login/login.php");
     
     echo " Contraseña o Usuario Incorrecto
     <script>

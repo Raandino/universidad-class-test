@@ -20,7 +20,7 @@ include('../../Login/iniciar.php');
 	//verificamos la ejecucion
 
 	if(mysqli_query($conexion, $sql) ){
-		header("Location: http://localhost:8080/formulario/admin/coord/coord.php");
+		header("Location: https://universidad-class-test.herokuapp.com//admin/coord/coord.php");
 	}
 	else{
 		echo "Ya existe un coordinador con ese numero de carnet";

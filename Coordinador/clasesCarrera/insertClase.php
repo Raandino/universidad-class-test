@@ -25,7 +25,7 @@ include('../../Login/iniciar.php');
 	//verificamos la ejecucion
 
 	if(mysqli_query($conexion, $sql)){
-		header("Location: http://localhost:8080/formulario/Coordinador/clasesCarrera/agregarClase.php");
+		header("Location: https://universidad-class-test.herokuapp.com//Coordinador/clasesCarrera/agregarClase.php");
 	}
 	else{
 		echo "Error al insertar clase, por favor asegurese que esta clase no este inscrita";

@@ -14,7 +14,7 @@ $q ="DELETE   from hora_materia where idmateria = '$idmateria' and dia='$dia' an
 if(mysqli_query($conexion, $q))
 {
    
-    header("Location: http://localhost:8080/formulario/Coordinador/horarioMaterias/materias.php");
+    header("Location: https://universidad-class-test.herokuapp.com//Coordinador/horarioMaterias/materias.php");
 }
 else 
 {

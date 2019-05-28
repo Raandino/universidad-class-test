@@ -10,11 +10,11 @@ $data =  mysqli_query($conexion, $sql) && mysqli_query($conexion, $query);
 if($data)
 {
    
-    header("Location: http://localhost:8080/formulario/admin/alumnos/alumnos.php");
+    header("Location: https://universidad-class-test.herokuapp.com//admin/alumnos/alumnos.php");
 }
 else 
 {
-    header("Location: http://localhost:8080/formulario/admin/alumnos/alumnos.php");
+    header("Location: https://universidad-class-test.herokuapp.com//admin/alumnos/alumnos.php");
 
 }
 
