@@ -11,7 +11,7 @@
     <form action="Login/login.php">
     <h1>PRUEBA CAMBIO </h1>
     <td colspan="2" align="center"><input type="submit" name="enviando" id="enviando" value="entar"></td>
-    </form>
+    </form> 
    
 </body>
 </html>
