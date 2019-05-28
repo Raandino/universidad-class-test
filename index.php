@@ -8,7 +8,7 @@
 </head>
 <body>
     
-    <form action="conexion.php">
+    <form action="Login/login.php">
     <h1>amazon prueba </h1>
     <td colspan="2" align="center"><input type="submit" name="enviando" id="enviando" value="entar"></td>
     </form>
