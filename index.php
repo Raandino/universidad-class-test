@@ -7,9 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <?php
+	header("https://universidad-class-test.herokuapp.com/Login/login.php");
+    ?>
     <form action="Login/login.php">
-    <h1>PRUEBA CAMBIO </h1>
+    <h1>HOSIA </h1>
     <td colspan="2" align="center"><input type="submit" name="enviando" id="enviando" value="entar"></td>
     </form> 
    

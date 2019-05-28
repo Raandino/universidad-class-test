@@ -1,7 +1,4 @@
-<?php
-include('loguear.php');
 
-?>
 <!DOCTYPE html>
 <html>
 <head>
