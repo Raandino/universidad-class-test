@@ -13,7 +13,7 @@
     		die("Connection failed: " . $conn->connect_error);
 	}else{
 
-		echo "<h1>SIRVIO</h1>"
+		echo "<h1>SIRVIO</h1>";
 	}
 
 	
