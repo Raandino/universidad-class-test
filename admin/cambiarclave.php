@@ -59,10 +59,10 @@ $clave=$_SESSION['clave'];
                     $data = mysqli_query($conexion, $query);
                     if($data)
                     {
-                        header("Location: https://universidad-class-test.herokuapp.com//Login/login.php");
+                        header("Location: https://universidad-class-test.herokuapp.com/Login/login.php");
                     }
                     else{
-                        header("Location: https://universidad-class-test.herokuapp.com//Login/login.php");
+                        header("Location: https://universidad-class-test.herokuapp.com/Login/login.php");
                     }
                 }
         }

@@ -18,7 +18,7 @@ $q ="DELETE   from materia_docente where idmateria = '$idmateria' and iddocente=
 if(mysqli_query($conexion, $q))
 {
    
-    header("Location: https://universidad-class-test.herokuapp.com//Coordinador/matriculaDocente/matriculaDocente.php");
+    header("Location: https://universidad-class-test.herokuapp.com/Coordinador/matriculaDocente/matriculaDocente.php");
 }
 else 
 {

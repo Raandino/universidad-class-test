@@ -66,7 +66,7 @@ $_GET['car']; //nombre de la carrera
             //$data = mysqli_query($conexion, $sqk) && mysqli_query($conexion, $query);
             if(mysqli_query($conexion, $query))
             {
-                header("Location: https://universidad-class-test.herokuapp.com//admin/coord/coord.php");
+                header("Location: https://universidad-class-test.herokuapp.com/admin/coord/coord.php");
             }
             else{
                echo "No se pudo actualizar";

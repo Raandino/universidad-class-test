@@ -53,7 +53,7 @@ $_GET['cl'];
             $data = mysqli_query($conexion, $query);
             if($data)
             {
-                header("Location: https://universidad-class-test.herokuapp.com//admin/profesores/profesores.php");
+                header("Location: https://universidad-class-test.herokuapp.com/admin/profesores/profesores.php");
             }
             else{
                echo "No se pudo actualizar";

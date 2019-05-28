@@ -12,7 +12,7 @@ include('../../Login/iniciar.php');
 	$sql="INSERT into materias (codigo, nombre) VALUES('$codigo','$nombre')";
 	
 	if(mysqli_query($conexion, $sql)){
-		header("Location: https://universidad-class-test.herokuapp.com//admin/Clases/clases.php");
+		header("Location: https://universidad-class-test.herokuapp.com/admin/Clases/clases.php");
 	}
 	else{
 		echo "Error al insertar datos";

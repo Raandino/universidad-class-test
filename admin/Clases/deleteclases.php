@@ -12,7 +12,7 @@ $data =  mysqli_query($conexion, $sql);
 if($data)
 {
    
-    header("Location: https://universidad-class-test.herokuapp.com//admin/Clases/clases.php");
+    header("Location: https://universidad-class-test.herokuapp.com/admin/Clases/clases.php");
 }
 else 
 {

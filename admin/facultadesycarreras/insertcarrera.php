@@ -21,7 +21,7 @@ include('../../conexion.php');
 	$sql="INSERT into oferta_academica (idoferta, nombre, tipo, idfacultad) values ('$idcarrera','$nombre', '$tipo', '$idfacultad');";
 	//verificamos la ejecucion
 	if(mysqli_query($conexion, $sql)){
-		header("Location: https://universidad-class-test.herokuapp.com//admin/facultadesycarreras/carreras.php");
+		header("Location: https://universidad-class-test.herokuapp.com/admin/facultadesycarreras/carreras.php");
 			
 	}
 	else{

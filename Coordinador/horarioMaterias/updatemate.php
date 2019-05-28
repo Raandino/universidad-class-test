@@ -73,7 +73,7 @@ $_GET['dia'];   //Dia de la materia
             if($data)
             {
                 
-                header("Location: https://universidad-class-test.herokuapp.com//Coordinador/horarioMaterias/materias.php");
+                header("Location: https://universidad-class-test.herokuapp.com/Coordinador/horarioMaterias/materias.php");
             }
             else{
                echo"Error al hacer update";

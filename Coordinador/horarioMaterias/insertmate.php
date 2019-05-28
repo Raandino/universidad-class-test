@@ -25,7 +25,7 @@ include('../../conexion.php');
 	//verificamos la ejecucion
 	if (mysqli_query($conexion, $horario) ){
 	
-		header("Location: https://universidad-class-test.herokuapp.com//Coordinador/horarioMaterias/materias.php");
+		header("Location: https://universidad-class-test.herokuapp.com/Coordinador/horarioMaterias/materias.php");
 			
 	}
 	else{

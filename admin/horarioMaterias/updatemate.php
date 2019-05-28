@@ -48,10 +48,10 @@ $_GET['sn'];
             $data = mysqli_query($conexion, $query);
             if($data)
             {
-                header("Location: https://universidad-class-test.herokuapp.com//admin/horarioMaterias/materias.php");
+                header("Location: https://universidad-class-test.herokuapp.com/admin/horarioMaterias/materias.php");
             }
             else{
-                header("Location: https://universidad-class-test.herokuapp.com//admin/horarioMaterias/materias.php");
+                header("Location: https://universidad-class-test.herokuapp.com/admin/horarioMaterias/materias.php");
             }
         }
       

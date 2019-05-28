@@ -20,7 +20,7 @@ $data = mysqli_query($conexion, $query);
 if($data)
 {
    
-    header("Location: https://universidad-class-test.herokuapp.com//admin/matricula/matricula.php");
+    header("Location: https://universidad-class-test.herokuapp.com/admin/matricula/matricula.php");
 }
 else 
 {

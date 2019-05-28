@@ -20,7 +20,7 @@ include('../../Login/iniciar.php');
 	//verificamos la ejecucion
 
 	if(mysqli_query($conexion, $sql) && mysqli_query($conexion, $sqk)){
-		header("Location: https://universidad-class-test.herokuapp.com//admin/alumnos/alumnos.php");
+		header("Location: https://universidad-class-test.herokuapp.com/admin/alumnos/alumnos.php");
 	}
 	else{
 		echo "Ya existe un alumno con ese numero de carnet";

@@ -377,7 +377,7 @@ if (mysqli_query($conn, $coord)) {
           echo "Error al crear la tabla: " . mysqli_error($conn);
       }  
 
-       header("Location: https://universidad-class-test.herokuapp.com//Login/login.php");
+       header("Location: https://universidad-class-test.herokuapp.com/Login/login.php");
 
  
 // Close connection

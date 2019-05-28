@@ -44,7 +44,7 @@ include('../../conexion.php');
 			$sql="INSERT INTO materia_docente(idmateria, iddocente, idgrupo) VALUES('$idmateria','$iddocente','$grupo')";
 			//verificamos la ejecucion
 			if(mysqli_query($conexion, $sql)){
-				header("Location: https://universidad-class-test.herokuapp.com//Coordinador/matriculaDocente/matriculaDocente.php");
+				header("Location: https://universidad-class-test.herokuapp.com/Coordinador/matriculaDocente/matriculaDocente.php");
 					
 			}
 			else{

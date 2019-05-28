@@ -14,11 +14,11 @@ $k="DELETE   from materia_docente  where idmateria = '$idmateria' and idgrupo='$
 if(mysqli_query($conexion, $k) && mysqli_query($conexion, $q))
 {
    
-    header("Location: https://universidad-class-test.herokuapp.com//admin/horarioMaterias/materias.php");
+    header("Location: https://universidad-class-test.herokuapp.com/admin/horarioMaterias/materias.php");
 }
 else 
 {
-    header("Location: https://universidad-class-test.herokuapp.com//admin/horarioMaterias/materias.php");
+    header("Location: https://universidad-class-test.herokuapp.com/admin/horarioMaterias/materias.php");
 }
 
 ?>
