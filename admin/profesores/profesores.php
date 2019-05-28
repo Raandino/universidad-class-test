@@ -30,7 +30,7 @@ include('../../Login/iniciar.php');
 						<table class="tabla" id="buscador">
 								<thead>
 								<tr>
-									<td>Id Profesor</td>
+									<td>ID</td>
 									<td>Nombre</td>
 									<td>Apellido</td>
 									<td>Acciones</td>
@@ -55,13 +55,24 @@ include('../../Login/iniciar.php');
 								<a  href='updateprofes.php?rn=$mostrar[iddocente]&sn=$mostrar[nombre]&cl=$mostrar[apellido]'>Editar</a>
 								</button>
 
-								<button >
-								<a  href='deleteprofes.php?pn=$mostrar[iddocente]'>Borrar</a>
+								<button class='pop-up-del'>
+								<a>Borrar</a>
 								</button>
 								</td>
 								
 								</tr>
-								</tbody>";
+								</tbody>
+								<div class='pop-up-borrar'>
+										<div>
+											<p>¿Esta seguro?</p>
+											<button class='pop-up-del'>
+												<a href='deleteprofes.php?pn=$mostrar[iddocente]'>Confirmar</a>
+											</button>
+											<br>
+											<br>
+											<input class= 'pop-up-cancel' type='button' value='Cancelar'>
+										</div>
+									</div>";
 									
 							?>
 							
@@ -75,18 +86,18 @@ include('../../Login/iniciar.php');
 			<div class="form col">
 			<h2>Registrar</h2>	
 				<form action="insertprofes.php" method="POST" autocomplete="off" pattern="\S">
-					<p>ID Profesor</p>
+					<p>ID Docente</p>
 					
 					<br>
-					<input type="text" name="iddocente" placeholder="iddocente" maxlength="8" pattern="^[0-9]*$" required>
+					<input type="text" name="iddocente" placeholder="ID" maxlength="14" pattern="^([0-9]{13})([A-Z]{1})$" required oninvalid="this.setCustomValidity('Se requieren 13 digitos y 1 letra mayuscula')">
 					<p>Nombre</p>
 					
 					<br>
-					<input type="text" name="nombre" placeholder="Primer nombre" maxlength="45" pattern="^[A-Za-z]+$" required>
+					<input type="text" name="nombre" placeholder="Primer nombre" maxlength="45" pattern="^[A-Za-z]+$" required oninvalid="this.setCustomValidity('Solo se aceptan letras')">
 					<p>Apellido</p>
 					
 					<br>
-					<input type="text" name="apellido" placeholder="Apellido" maxlength="45" pattern="^[A-Za-z]+$" required>
+					<input type="text" name="apellido" placeholder="Apellido" maxlength="45" pattern="^[A-Za-z]+$" required oninvalid="this.setCustomValidity('Solo se aceptan letras')">
 					<br>
 					<br>
 

@@ -68,12 +68,12 @@ include('../../Login/iniciar.php');
 				<form action="insertcarrera.php" method="POST" autocomplete="off" pattern="\S">
 					<p>ID Carrera</p>
 					<br>
-					<input type="text" name="idcarrera" placeholder="ID Carrera"  required>
+					<input type="text" name="idcarrera" placeholder="ID Carrera"  required >
                     <br>
 
 					<p>Nombre</p>		
 					<br>
-					<input type="text" name="nombre" placeholder="Nombre de la Carrera" maxlength="45"  required>
+					<input type="text" name="nombre" placeholder="Nombre de la Carrera" maxlength="45" required oninvalid="this.setCustomValidity('Solo se aceptan letras')">
 					<br>
 					<br>
 

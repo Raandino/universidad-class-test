@@ -92,3 +92,8 @@ a{
 	background-color: rgba(10, 15, 20, 0.1);
 	border: 0;
 }
+
+	
+.idnone{
+	display: none;
+}

@@ -32,7 +32,7 @@
 							<table class="tabla" id="buscador">
 								<thead>
 									<tr>
-										<td >Id</td>
+										<td >CIF</td>
 										<td>Nombre</td>
 										<td>Apellido</td>
 										<td>Carrera</td>
@@ -60,13 +60,24 @@
 									<a  href='update.php?rn=$mostrar[idalumno]&sn=$mostrar[nombre]&cl=$mostrar[apellido]&car=$mostrar[carrera]'>Editar</a>
 									</button>
 
-									<button class='pop-up-activate'>
-									<a  href='delete.php?rn=$mostrar[idalumno]'>Borrar</a>
+									<button class='pop-up-del'>
+									Borrar
 									</button>
 									</td>
 									
 									</tr>
-									</tbody>";
+									</tbody>
+									<div class='pop-up-borrar'>
+										<div>
+											<p>¿Esta seguro?</p>
+											<button class='pop-up-del'>
+												<a href='delete.php?rn=$mostrar[idalumno]'>Confirmar</a>
+											</button>
+											<br>
+											<br>
+											<input class= 'pop-up-cancel' type='button' value='Cancelar'>
+										</div>
+									</div>";
 										
 								?>
 								
@@ -83,15 +94,15 @@
 					<p>CIF</p>
 					
 					<br>
-					<input type="text" name="cif" placeholder="CIF" maxlength="8" pattern="^[0-9]*$" required>
+					<input type="text" name="cif" placeholder="CIF" maxlength="8" pattern="^[0-9]*$" required oninvalid="this.setCustomValidity('Solo se aceptan numeros')">
 					<p>Nombre</p>
 					
 					<br>
-					<input type="text" name="nombre" placeholder="Primer nombre" maxlength="25" pattern="^[A-Za-z]+$" required>
+					<input type="text" name="nombre" placeholder="Primer nombre" maxlength="25" pattern="^[A-Za-z]+$" required oninvalid="this.setCustomValidity('Solo se aceptan letras')">
 					<p>Apellido</p>
 					
 					<br>
-					<input type="text" name="apellido" placeholder="Apellido" maxlength="25" pattern="^[A-Za-z]+$" required>
+					<input type="text" name="apellido" placeholder="Apellido" maxlength="25" pattern="^[A-Za-z]+$" required oninvalid="this.setCustomValidity('Solo se aceptan letras)">
 						<br>
 								<br>
 						<select name="carrera" required flex>
@@ -120,7 +131,7 @@
 							<div >
 							<p>¿Esta seguro?</p>
 							<input href='guardar.php' type="submit" value="Confirmar">
-							<br>
+							
 							<br>
 							<input class= "pop-up-cancel" type="button" value="Cancelar">
 							</div>

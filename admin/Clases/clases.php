@@ -52,13 +52,24 @@ include('../../Login/iniciar.php');
 							<td>
 							
 
-							<button >
-							<a  href='deleteclases.php?pn=$mostrar[idmateria]&sc=$mostrar[codigo]'>Borrar</a>
+							<button class='pop-up-del'>
+							<a>Borrar</a>
 							</button>
 							</td>
                         
 							</tr>
-							</tbody>";
+							</tbody>
+							<div class='pop-up-borrar'>
+										<div>
+											<p>¿Esta seguro?</p>
+											<button class='pop-up-del'>
+												<a href='deleteclases.php?pn=$mostrar[idmateria]&sc=$mostrar[codigo]'>Borrar</a>
+											</button>
+											<br>
+											<br>
+											<input class= 'pop-up-cancel' type='button' value='Cancelar'>
+										</div>
+									</div>";
                                 
                         ?>
                         
@@ -76,13 +87,13 @@ include('../../Login/iniciar.php');
 					<p>Codigo</p>
 					
 					<br>
-					<input type="text" name="codigo" placeholder="Codigo de Clase" maxlength="8"  required>
+					<input type="text" name="codigo" placeholder="Codigo de Clase" maxlength="5" required >
                     <br>
                     <br>
 
 					<p>Nombre de la Materia</p>
                     <br>
-					<input type="text" name="nombre" placeholder="Nombre de la clase" maxlength="45"  required>
+					<input type="text" name="nombre" placeholder="Nombre de la clase" maxlength="45"  required >
 					
 					
 		

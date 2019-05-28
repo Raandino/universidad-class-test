@@ -1,13 +1,12 @@
 <?php
 
-$link = mysqli_connect("us-cdbr-iron-east-02.cleardb.net:336", "baaa99915d8ee8", "9aaeb95d");
+$link = mysqli_connect("localhost:3307", "root", "");
  
 // Check connection
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
-
-/* 
+ 
 //creacion base de datos
 $base = "CREATE DATABASE IF NOT EXISTS universidad";
 if(mysqli_query($link, $base)){
@@ -15,10 +14,8 @@ if(mysqli_query($link, $base)){
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
-*/
 
-$conn = mysqli_connect("us-cdbr-iron-east-02.cleardb.net:3306", "baaa99915d8ee8", "9aaeb95d", "heroku_a9b4f5dbca572c4");
-
+$conn = mysqli_connect("localhost:3307", "root", "", "universidad");
 
 //tabla facultades
 $facultades= "CREATE table if not exists facultades(
@@ -38,7 +35,7 @@ $oferta= "CREATE table if not exists oferta_academica(
     idoferta varchar(10) not null,
     primary key (idcarrera),
     nombre varchar(45) not null, 
-    tipo enum('pregrado', 'posgrado'),
+    tipo enum('Pregrado', 'Posgrado'),
     idfacultad varchar(10) ,
     foreign key(idfacultad) references facultades(idfacultad)
     )Engine =  innodb;";
@@ -51,10 +48,11 @@ $oferta= "CREATE table if not exists oferta_academica(
 
     //tabla pensum
 $pensum= "CREATE table if not exists pensum (
-    idpensum varchar(8) not null,
-    primary key(idpensum),
-    year datetime not null,
-    idcarrera mediumint not null,
+    idcarrera MEDIUMINT not null,
+    semestre enum('Semestre I', 'Semestre II', 'Semestre III') not null,
+    idmateria mediumint not null,
+    primary key(semestre, idmateria, idcarrera),
+    foreign key (idmateria) references materias(idmateria),
     foreign key (idcarrera) references oferta_academica(idcarrera)
     )Engine= innodb;";
  
@@ -184,7 +182,7 @@ if (mysqli_query($conn, $coord)) {
 
        //tabla docentes
        $docentes= "CREATE table if not exists docentes(
-        iddocente varchar(10) not null, 
+        iddocente varchar(15) not null, 
         primary key (iddocente),
         nombre varchar (45) not null,
         apellido varchar(45) not null 
@@ -227,7 +225,7 @@ if (mysqli_query($conn, $coord)) {
        //tabla materias docentes
        $materiasdocentes= "CREATE table if not exists materia_docente(
         idmateria MEDIUMINT not null, 
-        iddocente varchar(10) not null, 
+        iddocente varchar(15) not null, 
         idgrupo varchar (5) not null,
         primary key (idmateria,idgrupo),
         foreign key (idmateria) references materias(idmateria),
@@ -278,7 +276,39 @@ if (mysqli_query($conn, $coord)) {
            echo "Error poner el registro" . mysqli_error($conn);
        } 
 
+          //trigger para insertar coordinadores en la tabla login
+          $cuentacoord= "
+    
+          CREATE trigger cuenta_coord after insert on coordinadores
+          for each row
+          begin
+          insert into login(usuario, clave, cargo) values (new.idcoordinador, '12345678', 'coord');
+          
+          END ;
+         ";
+         
+         if (mysqli_query($conn, $cuentacoord)) {
+      } else {
+          echo "Error al crear la tabla: " . mysqli_error($conn);
+      }  
+  
+  
+  
+          //trigger para borrar cuentas de coordinadores -->login 
+          $borrarcoor= "
+          
+          CREATE trigger borrar_coord after delete on coordinadores
+          for each row
+          begin
+          delete from login where usuario = old.idcoordinador;
+          
+          END;
+          ";
        
+         if (mysqli_query($conn, $borrarcoor)) {
+         } else {
+             echo "Error al crear la tabla: " . mysqli_error($conn);
+         }  
 
     
        //trigger para insertar alumnos en la tabla login
@@ -347,8 +377,7 @@ if (mysqli_query($conn, $coord)) {
           echo "Error al crear la tabla: " . mysqli_error($conn);
       }  
 
-        echo "se supone que se creo";
-       ///header("Location: http://localhost:8080/formulario/Login/login.php");
+       header("Location: http://localhost:8080/formulario/Login/login.php");
 
  
 // Close connection

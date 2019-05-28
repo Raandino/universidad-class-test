@@ -9,6 +9,7 @@ $clave = $_POST['password'];
 $_SESSION['usuario']= $usuario;
 $_SESSION['clave']= $clave;
 
+
 //ADMINS
 $q = "SELECT COUNT(*) as contar from login where usuario = '$usuario' and clave = '$clave' and cargo ='admin'";
 $consulta = mysqli_query($conexion, $q);
@@ -17,7 +18,7 @@ $array = mysqli_fetch_array($consulta);
 
 if($array['contar']>0){
     $_SESSION['usuario'] = $usuario; //nuevo
-    header("Location:https://universidad-class-test.herokuapp.com/admin/main/main.php");
+    header("Location:http://localhost:8080/formulario/admin/main/main.php");
     
 }
 
@@ -42,10 +43,6 @@ if($array['contar']>0){
     header("Location:http://localhost:8080/formulario/LoginDocente/maindocentes.php");
     
 }
-else{
-    
-   echo"Contrasena o usuario incorrecto";
-}
 
 //Coordinadores
 $q = "SELECT COUNT(*) as contar from login where usuario = '$usuario' and clave = '$clave' and cargo ='coord'";
@@ -54,11 +51,27 @@ $array = mysqli_fetch_array($consulta);
 
 if($array['contar']>0){
     $_SESSION['usuario'] = $usuario; //nuevo
-    header("Location:http://localhost:8080/formulario/Coordinador/coord.php");
+    header("Location:http://localhost:8080/formulario/Coordinador/main/maincoor.php");
     
-}
-else{
+}{
+    //header("Location:http://localhost:8080/formulario/Login/login.php");
     
-   echo"Contrasena o usuario incorrecto";
-}
+    echo " Contraseña o Usuario Incorrecto
+    <script>
+         $('.pop-up').(function(){
+     $('body').css('pointer-events', 'none');
+     $('.pop-up').css('display', 'block')
+     $('.pop-up').slideDown(500);
+ });
+ $('.pop-up-cancel').click(function(){
+     $('body').css('pointer-events', 'all');
+     $('.pop-up').css('display', 'none')
+     $('.pop-up-borrar').css('display', 'none');
+     $('.pop-up').slideDown(500);
+     $('.pop-up-borrar').slideDown(500);
+ });
+     </script> ";
+ 
+ }  
+
 ?>

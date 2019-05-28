@@ -62,13 +62,24 @@ include('../../Login/iniciar.php');
 							<td>
 							
 
-							<button >
-							<a  href='deletematricula.php?pn=$mostrar[nombre]&sc=$mostrar[idalumno]&gr=$mostrar[grupo]'>Borrar</a>
+							<button class='pop-up-del'>
+							<a>Borrar</a>
 							</button>
 							</td>
                         
 							</tr>
-							</tbody>";
+							</tbody>
+							<div class='pop-up-borrar'>
+										<div>
+											<p>¿Esta seguro?</p>
+											<button class='pop-up-del'>
+												<a href='deletematricula.php?pn=$mostrar[nombre]&sc=$mostrar[idalumno]&gr=$mostrar[grupo]'>Confirmar</a>
+											</button>
+											<br>
+											<br>
+											<input class= 'pop-up-cancel' type='button' value='Cancelar'>
+										</div>
+									</div>";
                                 
                         ?>
                         
@@ -85,14 +96,14 @@ include('../../Login/iniciar.php');
 					<p>ID Alumno</p>
 					
 					<br>
-					<input type="text" name="idalumno" placeholder="Id Alumno" maxlength="8" pattern="^[0-9]*$" required>
+					<input type="text" name="idalumno" placeholder="Id Alumno" maxlength="8" pattern="^[0-9]*$" required oninvalid="this.setCustomValidity('Solo se aceptan digitos')">
 					<br>	
 					<br>
-					<p>ID Materia</p>
+					<p>ID Clase</p>
 					
                     <br>
                     <select name="nombre">
-                        <option >--Materias disponibles--</option>
+                        <option >--Clases disponibles--</option>
                     <?php 
 							$sql="SELECT * from materias";
                             $result=mysqli_query($conexion,$sql);

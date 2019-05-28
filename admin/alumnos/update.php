@@ -27,9 +27,13 @@ $_GET['car']; //nombre de la carrera
     <div class="form col" >
     <form action="" method="GET" autocomplete="off"  >
 		<p>ID</p>
-		<br>
-        <input type="text" name="CIF" placeholder="CIF" maxlength="8" required value="<?php echo $_GET['rn']; ?>" DISABLED>
-       
+	
+    
+      
+        <br>
+        <input class="idnone" type="text" name="idalumno" placeholder="CIF" maxlength="8" required value="<?php echo $_GET['rn']; ?>">
+        <p><?php echo $_GET['rn']; ?></p>
+        <br>
         
 		<p>Nombre</p>
 		<br>
@@ -53,7 +57,7 @@ $_GET['car']; //nombre de la carrera
             $nombre = $_GET['nombre'];
             $apellido = $_GET['apellido'];
            
-            $query ="UPDATE alumnos SET  nombre= '$nombre', apellido='$apellido' WHERE idalumno='$idalumno' or nombre= '$nombre' or apellido='$apellido'  ";
+            $query ="UPDATE alumnos SET  nombre= '$nombre', apellido='$apellido' WHERE idalumno='$idalumno' or nombre='$nombre' or apellido='$apellido' ";
            
 
             //$data = mysqli_query($conexion, $sqk) && mysqli_query($conexion, $query);
@@ -76,6 +80,4 @@ $_GET['car']; //nombre de la carrera
         
     </body>
 </html>
-
-
 
