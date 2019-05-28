@@ -1,7 +1,7 @@
 <?php
 	header("https://universidad-class-test.herokuapp.com/Login/login.php");
     ?>
-    
+    <!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,4 +18,4 @@
     </form> 
    
 </body>
-</html>
+</html> 
