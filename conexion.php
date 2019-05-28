@@ -1,8 +1,8 @@
 <?php
 
-	$servername = "us-cdbr-iron-east-02.cleardb.net:3306";
-	$username = "baaa99915d8ee8";
-	$password = "9aaeb95d";
+	$servername = "universidadtest.crxav7eabiql.us-east-2.rds.amazonaws.com:3306";
+	$username = "admin";
+	$password = "12345678";
 	
 
 	// Create connection
@@ -11,10 +11,13 @@
 	// Check connection
 	if ($conn->connect_error) {
     		die("Connection failed: " . $conn->connect_error);
+	}else{
+
+		echo "<h1>SIRVIO</h1>"
 	}
 
 	
-	$conexion=mysqli_connect($servername,$username,$password,'heroku_a9b4f5dbca572c4');
+	$conexion=mysqli_connect($servername,$username,$password,'universidad_test');
 
 
 	

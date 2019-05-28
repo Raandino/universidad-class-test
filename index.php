@@ -8,8 +8,8 @@
 </head>
 <body>
     
-    <form action="Login/login.php">
-    <h1>NEPE</h1>
+    <form action="conexion.php">
+    <h1>amazon prueba </h1>
     <td colspan="2" align="center"><input type="submit" name="enviando" id="enviando" value="entar"></td>
     </form>
    
