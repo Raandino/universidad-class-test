@@ -1,23 +1,95 @@
 $(".pop-up-activate").click(function(){
+    $(this).css("display", "none")
     $("body").css("pointer-events", "none");
     $(".pop-up").css("display", "flex")
-    console.log("Esto si funciona")
-    console.log($('.pop-up')[0]);
-    $(".pop-up").slideDown(500);
+   
 });
 $(".pop-up-del").click(function(){
+    $(this).css("display", "none")
+    const father = $(this).text()
+    const replace = father.slice(6);
+    
+    console.log(replace)
+    $('a.toDelete').each(function(){
+        this.href = this.href.replace('replace', replace);
+
+    });
     $("body").css("pointer-events", "none");
     $(".pop-up-borrar").css("display", "flex")
-    console.log("Esto si funciona")
-    console.log($('.pop-up-borrar')[0]);
-    $(".pop-up-borrar").slideDown(500);
+    
+});
+
+$(".pop-up-del-multi").click(function(){
+    $(this).css("display", "none")
+    if($(this).css('display') == 'none')
+{
+    const father = $(this).find('p')
+    console.log(father)
+    const replace = father.slice(0,1).text();
+    console.log(replace)
+    const replace2 = father.slice(1,2).text();
+    console.log(replace2)
+    const replace3 = father.slice(2,3).text();
+    console.log(replace3)
+    const replace4 = father.slice(3,4).text();
+    console.log(replace4)
+    const replace5 = father.slice(4,5).text();
+    console.log(replace5)
+    $('a.toDelete').each(function(){
+        this.href = this.href.replace('replace', replace);
+        this.href = this.href.replace('replace2', replace2);
+        this.href = this.href.replace('replace3', replace3);
+        this.href = this.href.replace('replace4', replace4);
+        this.href = this.href.replace('replace5', replace5);
+    });
+    $("body").css("pointer-events", "none");
+    $(".pop-up-borrar").css("display", "flex")
+}
+    
+    
 });
 $(".pop-up-cancel").click(function(){
+    $(".pop-up-activate").css("display", "inline")
+    $(".pop-up-del").css("display", "inline")
+    $(".pop-up-del-multi").css("display", "inline")
     $("body").css("pointer-events", "all");
     $(".pop-up").css("display", "none")
     $(".pop-up-borrar").css("display", "none")
-    console.log("Esto si funciona")
-    console.log($('.pop-up')[0]);
-    $(".pop-up").slideDown(500);
-    $(".pop-up-borrar").slideDown(500);
+    $(".pop-up-error").css("display", "none")
+
+    
 });
+function change(){
+    const url = window.location.href;  
+    const selectBox = $(".replace");
+    const father = selectBox.find('option')
+    const Valor = selectBox.prop('selectedIndex')
+    const change = father.slice(Valor,Valor+1).text();
+
+    var request = new XMLHttpRequest();
+    // POST to httpbin which returns the POST data as JSON
+    request.open('POST', url, /* async = */ false);
+
+    var formData = new FormData(change);
+    formData.append('change', change);
+    request.send(formData)
+    console.log(request.response)
+    /*fetch(url, { method: 'POST', body: formData})
+    
+     console.log(fetch(url, { method: 'POST', body: formData}));*/
+}
+
+$("document").ready(function(){
+    const clickeado = $("a.menu")
+    const largo = clickeado.length
+    const url = window.location.href;  
+    for(var i=0; i<largo; i++){
+        if(clickeado[i] == url){
+            console.log(clickeado[i].href)
+            $(clickeado[i]).toggleClass('toggle-side')
+        }
+    }
+        
+})
+
+ 

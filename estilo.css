@@ -1,6 +1,6 @@
 body{
 	background-color:  rgb(46, 59, 73);
-	color: #fff;
+	color: rgb(0, 0, 0);
 
 }
 h3{
@@ -20,6 +20,12 @@ h3{
 	text-align: center;
 	padding-bottom: 10px;
 }
+#h2conf{
+	margin: auto;
+	text-align: center;
+	padding-bottom: 10px;
+	color:white;
+}
 
 input[type="submit"]{
 	position:relative;
@@ -28,7 +34,7 @@ input[type="submit"]{
 	border-radius:20px;
 	margin-left: center;
 	border:0px;
-	background-color:rgb(41, 158, 173);
+	background-color:rgb(12, 43, 40);
 	font: 14px normal normal uppercase helvetica, arial, serif;
 }
 
@@ -39,23 +45,32 @@ p{
 }
 
 .form{
-	background: rgb(46, 59, 73);
-	margin: 0 auto ;
-	padding: 30px;
-	text-align: center;
-	border : 5px solid #000;
-	width: 30%;
+	color: white;
+     background: rgb(30, 38, 46);
+     margin-left: 50px;
+     padding: 2em;
+     text-align: center;
+     border : 0.15em solid white;
+     width:250px;
+     border-radius: 1.2em;
+     height: 75vh;
+}
+.formcontra{
+	color: white;
+     background: rgb(30, 38, 46);
+	 margin: 0 auto;
+     padding: 2em;
+     text-align: center;
+     border : 0.15em solid white;
+     width:30%;
+     border-radius: 1.2em;
+     height: 65vh;
+}
+#reseteo{
+	margin-top: 20vh;
 }
 
-.tabla{
-	border:1px solid;
-	width:500px;
-}
-td{
-	text-align: center;
-	border: 1px solid;
-	font: 18px normal normal uppercase helvetica, arial, serif;
-}
+
 
 .btcolor{
 	
@@ -78,22 +93,27 @@ button {
 	border-radius:20px;
 	margin-left: center;
 	border:0px;
-	background-color: rgb(29, 119, 129);
+	background-color:rgb(29, 119, 129);
 	font: 14px normal normal uppercase helvetica, arial, serif;
 }
 a{
 	color:black;
 }
 .card-body{
-	background-color: rgb(29, 119, 129);
-	border-color:  rgb(29, 119, 129);
+	background-color: rgb(12, 43, 65);
+	border-color:  rgb(12, 43, 65);
 }
 .btn-success{
-	background-color: rgba(10, 15, 20, 0.1);
+	background-color: rgba(10, 15, 20, 0.2);
 	border: 0;
 }
 
 	
 .idnone{
 	display: none;
+}
+input{
+	border-radius:1em;
+	height: 2em;
+	border: 0;
 }

@@ -1,6 +1,6 @@
 <?php
 
-$link = mysqli_connect("localhost:3307", "root", "");
+$link = mysqli_connect("localhost", "root", "");
  
 // Check connection
 if($link === false){
@@ -15,7 +15,7 @@ if(mysqli_query($link, $base)){
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
 
-$conn = mysqli_connect("localhost:3307", "root", "", "universidad");
+$conn = mysqli_connect("localhost", "root", "", "universidad");
 
 //tabla facultades
 $facultades= "CREATE table if not exists facultades(
@@ -33,8 +33,8 @@ $facultades= "CREATE table if not exists facultades(
 $oferta= "CREATE table if not exists oferta_academica(
     idcarrera MEDIUMINT NOT NULL AUTO_INCREMENT,
     idoferta varchar(10) not null,
-    primary key (idcarrera),
     nombre varchar(45) not null, 
+    primary key (idcarrera, nombre),
     tipo enum('Pregrado', 'Posgrado'),
     idfacultad varchar(10) ,
     foreign key(idfacultad) references facultades(idfacultad)
@@ -46,20 +46,7 @@ $oferta= "CREATE table if not exists oferta_academica(
     }    
 
 
-    //tabla pensum
-$pensum= "CREATE table if not exists pensum (
-    idcarrera MEDIUMINT not null,
-    semestre enum('Semestre I', 'Semestre II', 'Semestre III') not null,
-    idmateria mediumint not null,
-    primary key(semestre, idmateria, idcarrera),
-    foreign key (idmateria) references materias(idmateria),
-    foreign key (idcarrera) references oferta_academica(idcarrera)
-    )Engine= innodb;";
- 
-if (mysqli_query($conn, $pensum)) {
-} else {
-    echo "Error al crear la tabla: " . mysqli_error($conn);
-}  
+
 
  //tabla coordinadores 
  $coord= "CREATE table if not exists coordinadores(
@@ -137,15 +124,18 @@ if (mysqli_query($conn, $coord)) {
        //tabla materias
        $materias= "CREATE table if not exists materias(
         idmateria MEDIUMINT NOT NULL AUTO_INCREMENT,
-        codigo varchar (5) not null, 
-        primary key (idmateria), 
-        nombre varchar(45) not null
+        codigo varchar (5) not null,
+        prerequisito MEDIUMINT, 
+        nombre varchar(45) not null,
+        primary key (idmateria, nombre) 
         )Engine= innodb;";
      
        if (mysqli_query($conn, $materias)) {
        } else {
            echo "Error al crear la tabla: " . mysqli_error($conn);
        }  
+
+        
 
           //tabla materias_alumnos
             $materiasalumnos= "CREATE table if not exists materias_alumnos(
@@ -170,8 +160,9 @@ if (mysqli_query($conn, $coord)) {
         horfinal TIME not null, 
         idmateria MEDIUMINT not null, 
         idgrupo varchar (5) not null,
-        dia varchar(12) not null,   
-        primary key(idgrupo, idmateria),
+        dia varchar(12) not null,
+        aula varchar(5) not null,   
+        primary key(idgrupo, idmateria, dia),
         foreign key (idmateria) references materias(idmateria)
         )Engine= innodb;";
      
@@ -195,10 +186,11 @@ if (mysqli_query($conn, $coord)) {
 
           //tabla notas
     $notas= "CREATE table if not exists notas(
-        nota double not null ,
-        primary key (nota),
+        nota double default null,
         idalumno varchar(10) not null,
-        idmateria MEDIUMINT not null, 
+        idmateria MEDIUMINT not null,
+        idgrupo varchar(5) not null, 
+        primary key (idalumno,idmateria),
         foreign key (idalumno) references alumnos(idalumno),
         foreign key (idmateria) references materias(idmateria)
         )Engine= innodb;";
@@ -211,7 +203,7 @@ if (mysqli_query($conn, $coord)) {
         //tabla login
        $login = "CREATE table if not exists login(
         usuario varchar(50) not null,
-        clave varchar(40) not null,
+        clave varchar(150) not null,
         cargo enum('alumno', 'profesor','admin','coord'),
         primary key (usuario)
         
@@ -237,6 +229,20 @@ if (mysqli_query($conn, $coord)) {
        } else {
            echo "Error al crear la tabla: " . mysqli_error($conn);
        }  
+                //tabla pensum
+        $pensum= "CREATE table if not exists pensum (
+            idcarrera MEDIUMINT not null,
+            semestre enum('Semestre I', 'Semestre II', 'Semestre III') not null,
+            idmateria mediumint not null,
+            primary key(semestre, idmateria, idcarrera),
+            foreign key (idmateria) references materias(idmateria),
+            foreign key (idcarrera) references oferta_academica(idcarrera)
+            )Engine= innodb;";
+        
+        if (mysqli_query($conn, $pensum)) {
+        } else {
+            echo "Error al crear la tabla: " . mysqli_error($conn);
+        }  
 
 
 
@@ -275,6 +281,35 @@ if (mysqli_query($conn, $coord)) {
        } else {
            echo "Error poner el registro" . mysqli_error($conn);
        } 
+       /*Registro de dos carreras*/ 
+       $isis= "INSERT into oferta_academica(idoferta, nombre, tipo, idfacultad) values ('I-SIS','Ingenieria en Sistemas', 'Pregrado','F-ING');";
+       if (mysqli_query($conn, $isis)) {
+       } else {
+           echo "Error poner el registro" . mysqli_error($conn);
+       }
+       $mark= "INSERT into oferta_academica(idoferta, nombre, tipo, idfacultad) values ('MARK','Marketing', 'Pregrado','F-MDC');";
+       if (mysqli_query($conn, $mark)) {
+       } else {
+           echo "Error poner el registro" . mysqli_error($conn);
+       }
+
+       //Registro de 3 materias
+       $mat= "INSERT into materias(codigo, nombre) values ('MTM','Matematica Basica' );";
+       if (mysqli_query($conn, $mat)) {
+       } else {
+           echo "Error poner el registro" . mysqli_error($conn);
+       }
+       $log= "INSERT into materias(codigo, nombre) values ('SIS101','Logica y Algoritmo' );";
+       if (mysqli_query($conn, $log)) {
+       } else {
+           echo "Error poner el registro" . mysqli_error($conn);
+       }
+       
+       $prinma= "INSERT into materias(codigo, nombre) values ('MA101','Fundamentos de Marketing' );";
+       if (mysqli_query($conn, $prinma)) {
+       } else {
+           echo "Error poner el registro" . mysqli_error($conn);
+       }
 
           //trigger para insertar coordinadores en la tabla login
           $cuentacoord= "
@@ -377,7 +412,40 @@ if (mysqli_query($conn, $coord)) {
           echo "Error al crear la tabla: " . mysqli_error($conn);
       }  
 
-       header("Location: https://universidad-class-test.herokuapp.com/Login/login.php");
+      //trigger para meter alumnos en tabla notas    
+      $notas= "
+        
+      CREATE trigger notasAlumnos after insert on materias_alumnos
+      for each row
+      begin
+      insert into notas( idalumno, idmateria, idgrupo) values (new.idalumno, new.idmateria, new.idgrupo);
+
+      
+      END;
+      ";
+   
+     if (mysqli_query($conn, $notas)) {
+     } else {
+         echo "Error al crear la tabla: " . mysqli_error($conn);
+     }  
+
+     //trigger para borrar alumnos de notas si retiran la clase
+     $borrarnotas= "
+        
+     CREATE trigger borrarNotas after delete on materias_alumnos    
+     for each row
+     begin
+     delete from notas where idalumno=old.idalumno and idmateria=old.idmateria and idgrupo=old.idgrupo;
+     
+     END;
+     ";
+  
+    if (mysqli_query($conn, $borrarnotas)) {
+    } else {
+        echo "Error al crear la tabla: " . mysqli_error($conn);
+    }  
+
+       header("Location: http://localhost:8080/formulario/Login/login.php");
 
  
 // Close connection

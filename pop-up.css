@@ -12,6 +12,9 @@
     
     pointer-events: all;
 }
+.pop-up-activate{
+    display: inline;
+}
 input[type=button], input[type=submit]{
     position:relative;
      width:100px;
@@ -39,4 +42,23 @@ input[type=button], input[type=submit]{
 }
 p{
     color:white;
+}
+.pop-up-error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.808);
+    text-align: center;
+    pointer-events: all;
+}
+.pop-up-del p{
+    display: none;
+}
+.pop-up-del-multi p{
+    display: none;
 }
