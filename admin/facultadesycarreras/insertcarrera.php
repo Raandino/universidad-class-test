@@ -21,11 +21,11 @@ include('../../conexion.php');
 	$sql="INSERT into oferta_academica (idoferta, nombre, tipo, idfacultad) values ('$idcarrera','$nombre', '$tipo', '$idfacultad');";
 	//verificamos la ejecucion
 	if(mysqli_query($conexion, $sql)){
-		header("Location: https://universidad-class-test.herokuapp.com/admin/facultadesycarreras/carreras.php");
+		header("Location: http://localhost:8080/formulario/admin/facultadesycarreras/carreras.php");
 			
 	}
 	else{
-       echo"Error al registrar la materia";
+		header("Location: http://localhost:8080/formulario/admin/facultadesycarreras/carreras.php?fallo=true");
 		
 	}
 ?>

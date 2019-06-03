@@ -3,6 +3,9 @@
 include('../../conexion.php');
 include('../../Login/iniciar.php');
  
+include('../../validarsesion.php');
+$usuario = $_SESSION['usuario']; 
+validaradmin($usuario,$conexion);
  ?>
 
 
@@ -27,6 +30,7 @@ include('../../Login/iniciar.php');
 					<h2>Matricula de clases </h2>
 					<input type="text" name="search" id="search" class="form-control" placeholder="Buscar en tabla" />  
 					<br>
+					<div class ='tableFixHead scroll' >
 					<table class="tabla" id="buscador">
 						<thead>
                             <tr>
@@ -61,32 +65,32 @@ include('../../Login/iniciar.php');
 							
 							<td>
 							
-
-							<button class='pop-up-del'>
-							<a>Borrar</a>
-							</button>
-							</td>
-                        
-							</tr>
-							</tbody>
+							<button class='pop-up-del-multi'>Borrar<p>".$mostrar['idalumno']."</p><p>".$mostrar['grupo']."</p><p>".$mostrar['nombre']."</p></button>
 							<div class='pop-up-borrar'>
 										<div>
 											<p>¿Esta seguro?</p>
-											<button class='pop-up-del'>
-												<a href='deletematricula.php?pn=$mostrar[nombre]&sc=$mostrar[idalumno]&gr=$mostrar[grupo]'>Confirmar</a>
+											<button>
+												<a class='toDelete' href='deletematricula.php?sc=replace&gr=replace2&pn=replace3'>Confirmar</a>
 											</button>
 											<br>
 											<br>
 											<input class= 'pop-up-cancel' type='button' value='Cancelar'>
 										</div>
-									</div>";
+									</div>
+
+							</td>
+                        
+							</tr>
+							</tbody>
+							";
                                 
                         ?>
                         
                     <?php 
                     }
                     ?>
-                    </table>
+					</table>
+					</div>
 				
 				</div>
 			
@@ -96,16 +100,16 @@ include('../../Login/iniciar.php');
 					<p>ID Alumno</p>
 					
 					<br>
-					<input type="text" name="idalumno" placeholder="Id Alumno" maxlength="8" pattern="^[0-9]*$" required oninvalid="this.setCustomValidity('Solo se aceptan digitos')">
+					<input type="text" name="idalumno" placeholder="Id Alumno" maxlength="8">
 					<br>	
 					<br>
-					<p>ID Clase</p>
 					
                     <br>
-                    <select name="nombre">
-                        <option >--Clases disponibles--</option>
+					<p>Clases disponibles</p>
+                    <select name="nombre" required>
+                        <option ></option>
                     <?php 
-							$sql="SELECT * from materias";
+							$sql="SELECT distinct materias.nombre as nombre from hora_materia, materias where hora_materia.idmateria=materias.idmateria";
                             $result=mysqli_query($conexion,$sql);
                             
                             
@@ -129,13 +133,13 @@ include('../../Login/iniciar.php');
 					<p>Grupo</p>
 					
 					<br>
-					<input type="number" name="grupo" placeholder="No. Grupo" maxlength="8" pattern="^[0-9]*$" required>
+					<input type="number" name="grupo" placeholder="No. Grupo" required>
 					<br>
 					<br>
 					<div class="pop-up">
 						<div >
 							<p>¿Esta seguro?</p>
-							<input href='insertcarrera.php' type="submit" value="Confirmar">
+							<input href='insertmatricula.php' type="submit" value="Confirmar">
 							<br>
 							<br>
 							<input class= "pop-up-cancel" type="button" value="Cancelar">
@@ -146,6 +150,38 @@ include('../../Login/iniciar.php');
 			</div>
 	</div>
 	</div>
+	<?php
+       if(isset($_GET["fallo"]) && $_GET["fallo"] == 'true')
+       {
+          echo "
+            <div class='pop-up-error'>
+                <div>
+                    <p>Ya Se Inscribio Esta Clase</p>
+                    <input class='pop-up-cancel' type='button' value='Confirmar'>
+                </div>
+            </div> ";
+	   }
+	   if(isset($_GET["fallo2"]) && $_GET["fallo2"] == 'true')
+       {
+          echo "
+            <div class='pop-up-error'>
+                <div>
+                    <p>La Clase Choca</p>
+                    <input class='pop-up-cancel' type='button' value='Confirmar'>
+                </div>
+            </div> ";
+	   }
+	   if(isset($_GET["fallo3"]) && $_GET["fallo3"] == 'true')
+       {
+          echo "
+            <div class='pop-up-error'>
+                <div>
+                    <p>Hubo Un Error Al Borrar</p>
+                    <input class='pop-up-cancel' type='button' value='Confirmar'>
+                </div>
+            </div> ";
+       }
+     ?>
 
 
 	</body>

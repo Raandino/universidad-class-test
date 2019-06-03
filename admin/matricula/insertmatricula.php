@@ -20,36 +20,50 @@ include('../../conexion.php');
 	$horafinal= $array['final'];
 	$dia= $array['dia'];
 
-
-	//Consulta para verificar si la hora y dia estan disponibles para un estudiante
-	$sinchoque = "SELECT count(*) as sinchoque FROM  materias, hora_materia, materias_alumnos 
-	WHERE (hora_materia.horainicio BETWEEN cast('$horainicio' AS time) and cast('$horafinal' AS time)  or
-	hora_materia.horfinal BETWEEN cast('$horainicio' AS time) and cast('$horafinal' AS time) )
-	and hora_materia.dia='$dia' 
-	and materias_alumnos.idalumno='$idalumno' and materias.idmateria = hora_materia.idmateria and materias.idmateria= materias_alumnos.idmateria and materias_alumnos.idgrupo=hora_materia.idgrupo";
+	//Verificamos si la materia y el grupo existen
+	$existencia = "SELECT count(*) as existencia from hora_materia where idmateria='$idmateria' and idgrupo='$grupo'; ";
 	
-	$consultad = mysqli_query($conexion, $sinchoque);
-	$arrayd = mysqli_fetch_array($consultad);
+	$consultados = mysqli_query($conexion, $existencia);
+	$arraydos = mysqli_fetch_array($consultados);
 
-	if($arrayd['sinchoque']==0)
+	if($arraydos['existencia']==1)
 	{
 		
-				//hacemos la sentencia de sql
-			$sql="INSERT INTO materias_alumnos(idmateria, idalumno, idgrupo) VALUES('$idmateria','$idalumno','$grupo')";
-			//verificamos la ejecucion
-			if(mysqli_query($conexion, $sql)){
-				header("Location: https://universidad-class-test.herokuapp.com/admin/matricula/matricula.php");
+		//Consulta para verificar si la hora y dia estan disponibles para un estudiante
+		$sinchoque = "SELECT count(*) as sinchoque FROM  materias, hora_materia, materias_alumnos 
+		WHERE (hora_materia.horainicio BETWEEN cast('$horainicio' AS time) and cast('$horafinal' AS time)  or
+		hora_materia.horfinal BETWEEN cast('$horainicio' AS time) and cast('$horafinal' AS time) )
+		and hora_materia.dia='$dia' 
+		and materias_alumnos.idalumno='$idalumno' and materias.idmateria = hora_materia.idmateria and materias.idmateria= materias_alumnos.idmateria and materias_alumnos.idgrupo=hora_materia.idgrupo";
+		
+		$consultad = mysqli_query($conexion, $sinchoque);
+		$arrayd = mysqli_fetch_array($consultad);
+
+		if($arrayd['sinchoque']==0)
+		{
+			
+					//hacemos la sentencia de sql
+				$sql="INSERT INTO materias_alumnos(idmateria, idalumno, idgrupo) VALUES('$idmateria','$idalumno','$grupo')";
+				//verificamos la ejecucion
+				if(mysqli_query($conexion, $sql)){
+					header("Location: http://localhost:8080/formulario/admin/matricula/matricula.php");
+						
+				}
+				else{
+					header("Location: http://localhost:8080/formulario/admin/matricula/matricula.php?fallo=true");
 					
-			}
-			else{
-				echo"Ya se inscribio esa materia!";
-				
-			}
-	}
+				}
+		}
+		else 
+		{
+			header("Location: http://localhost:8080/formulario/admin/matricula/matricula.php?fallo2=true");
+		}
+	}	
 	else 
 	{
-		echo "La clase choca xd";
+		echo"No existe un grupo para esa materia";
 	}
+
 
 	
 ?>

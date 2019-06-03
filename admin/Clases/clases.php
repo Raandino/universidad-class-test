@@ -3,6 +3,9 @@
 include('../../conexion.php');
 include('../../Login/iniciar.php');
  
+include('../../validarsesion.php');
+$usuario = $_SESSION['usuario']; 
+validaradmin($usuario,$conexion);
  ?>
 
 
@@ -24,15 +27,17 @@ include('../../Login/iniciar.php');
 
 		<div id="main">
 				<div class="contenedor-tabla"> 
-					<h2>Matricula de clases </h2>
+					<h2>Registro de Clases </h2>
 					<input type="text" name="search" id="search" class="form-control" placeholder="Buscar en tabla" />  
 					<br>
+					<div class ='tableFixHead scroll' >
 					<table class="tabla" id="buscador">
 						<thead>
                             <tr>
                                 <td>ID Clase</td>
                                 <td>Codigo</td>
                                 <td>Nombre</td>
+								<td>Prerequisito</td>
 								<td>Acciones</td>
                             
                             </tr>
@@ -47,41 +52,41 @@ include('../../Login/iniciar.php');
 							<tr>
                             <td>".$mostrar['idmateria']."</td>
                             <td>".$mostrar['codigo']."</td>
-                            <td>".$mostrar['nombre']."</td>
+							<td>".$mostrar['nombre']."</td>
+							<td>".$mostrar['prerequisito']."</td>
 						
 							<td>
 							
 
-							<button class='pop-up-del'>
-							<a>Borrar</a>
-							</button>
-							</td>
-                        
-							</tr>
-							</tbody>
+							<button class='pop-up-del'>Borrar<p>".$mostrar['idmateria']."</p></button>
 							<div class='pop-up-borrar'>
 										<div>
 											<p>¿Esta seguro?</p>
-											<button class='pop-up-del'>
-												<a href='deleteclases.php?pn=$mostrar[idmateria]&sc=$mostrar[codigo]'>Borrar</a>
+											<button>
+												<a class='toDelete' href='deleteclases.php?pn=replace'>Borrar</a>
 											</button>
 											<br>
 											<br>
 											<input class= 'pop-up-cancel' type='button' value='Cancelar'>
 										</div>
-									</div>";
+									</div>
+							</td>
+                        
+							</tr>
+							</tbody>";
                                 
                         ?>
                         
                     <?php 
                     }
                     ?>
-                    </table>
+					</table>
+					</div>
 				
 				</div>
 			
 			<div class="form col">
-			<h2>Registrar Materia</h2>	
+			<h2>Registrar Clase</h2>	
 				<form action="insertclases.php" method="POST" autocomplete="off">
                 <br>
 					<p>Codigo</p>
@@ -91,11 +96,32 @@ include('../../Login/iniciar.php');
                     <br>
                     <br>
 
-					<p>Nombre de la Materia</p>
+					<p>Nombre de la Clase</p>
                     <br>
 					<input type="text" name="nombre" placeholder="Nombre de la clase" maxlength="45"  required >
-					
-					
+					<br>
+					<br>
+					<p>Prerequisito</p>
+						<select name="prerequisito"  flex>
+                        <option >
+						</option>
+							<?php 
+									$sql="SELECT * from materias";
+									$result=mysqli_query($conexion,$sql);
+								
+									
+									while($ensenar=mysqli_fetch_array($result)){
+										echo "
+									
+											<option >".$ensenar['nombre']."</option>
+										
+									"
+											
+									?>
+									<?php 
+								}
+								?>	
+							</select>
 		
 					<br>
 					<br>
@@ -114,6 +140,28 @@ include('../../Login/iniciar.php');
 			</div>
 	</div>
 	</div>
+	<?php
+       if(isset($_GET["fallo"]) && $_GET["fallo"] == 'true')
+       {
+          echo "
+            <div class='pop-up-error'>
+                <div>
+					<p>Hubo Un Error Al Registrar La Clase</p>
+                    <input class='pop-up-cancel' type='button' value='Confirmar'>
+                </div>
+            </div> ";
+	   }
+	   if(isset($_GET["fallo2"]) && $_GET["fallo2"] == 'true')
+       {
+          echo "
+            <div class='pop-up-error'>
+                <div>
+					<p>Hubo Un Error Al Borrar La Clase</p>
+                    <input class='pop-up-cancel' type='button' value='Confirmar'>
+                </div>
+            </div> ";
+       }
+     ?>
 
 
 	</body>

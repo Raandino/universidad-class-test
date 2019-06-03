@@ -1,6 +1,10 @@
 <?php 
 		include('../../conexion.php');
 		include('../../Login/iniciar.php');
+
+		include('../../validarsesion.php');
+		$usuario = $_SESSION['usuario']; 
+		validaradmin($usuario,$conexion);
 	?>
 
 
@@ -29,6 +33,7 @@
 						<h2>Tabla Coordinadores</h2>
 						<input type="text" name="search" id="search" class="form-control" placeholder="Buscar en tabla" />  
 						<br>
+						<div class ='tableFixHead scroll' >
 							<table class="tabla" id="buscador">
 								<thead>
 									<tr>
@@ -60,24 +65,23 @@
 									<a  href='updatecoord.php?rn=$mostrar[idcoord]&sn=$mostrar[nombre]&cl=$mostrar[apellido]&car=$mostrar[carrera]'>Editar</a>
 									</button>
 
-									<button class='pop-up-del'>
-									<a>Borrar</a>
-									</button>
-									</td>
-									
-									</tr>
-									</tbody>
+									<button class='pop-up-del'>Borrar<p>".$mostrar['idcoord']."</p></button>
 									<div class='pop-up-borrar'>
 										<div>
 											<p>¿Esta seguro?</p>
-											<button class='pop-up-del'>
-												<a href='deletecoord.php?rn=$mostrar[idcoord]'>Confirmar</a>
+											<button>
+												<a class='toDelete' href='deletecoord.php?rn=replace'>Confirmar</a>
 											</button>
 											<br>
 											<br>
 											<input class= 'pop-up-cancel' type='button' value='Cancelar'>
 										</div>
-									</div>";
+									</div>
+									</td>
+									
+									</tr>
+									</tbody>
+									";
 										
 								?>
 								
@@ -85,6 +89,7 @@
 							}
 							?>	
 						</table>
+						</div>
 					
 					</div>
 				
@@ -98,15 +103,16 @@
 					<p>Nombre</p>
 					
 					<br>
-					<input type="text" name="nombre" placeholder="Primer nombre" maxlength="25" pattern="^[A-Za-z]+$" required oninvalid="this.setCustomValidity('Solo se aceptan letras')">
+					<input type="text" name="nombre" placeholder="Primer nombre" maxlength="25"  required >
 					<p>Apellido</p>
 					
 					<br>
-					<input type="text" name="apellido" placeholder="Apellido" maxlength="25" pattern="^[A-Za-z]+$" required oninvalid="this.setCustomValidity('Solo se aceptan letras')"> 
+					<input type="text" name="apellido" placeholder="Apellido" maxlength="25" required > 
 						<br>
-								<br>
+						<br>
+						<p>Carreras Disponibles</p>
 						<select name="carrera" required>
-                        <option required>--Carreras Disponibles--</option>
+                        <option required></option>
 							<?php 
 									$sql="SELECT * from oferta_academica";
 									$result=mysqli_query($conexion,$sql);
@@ -136,24 +142,37 @@
 							<input class= "pop-up-cancel" type="button" value="Cancelar">
 							</div>
 						</div>
-						
-
-
-						
-					</form>
 					
+					</form>
+					<br>
 					<button class="pop-up-activate">Enviar</button>
 				</div>
 			
 		</div>
 		
 		</div>
-		<style>
-			.form {
-				width:250px;
-				height: 500px;
-			}
-		</style>
+		<?php
+       if(isset($_GET["fallo"]) && $_GET["fallo"] == 'true')
+       {
+          echo "
+            <div class='pop-up-error'>
+                <div>
+					<p>Ya existe un usuario con esta identificacion</p>
+                    <input class='pop-up-cancel' type='button' value='Confirmar'>
+                </div>
+            </div> ";
+	   }
+	   if(isset($_GET["fallo2"]) && $_GET["fallo2"] == 'true')
+       {
+          echo "
+            <div class='pop-up-error'>
+                <div>
+					<p>Hubo Un Error Al Borrar</p>
+                    <input class='pop-up-cancel' type='button' value='Confirmar'>
+                </div>
+            </div> ";
+       }
+     ?>
 	
 
 		</body>
