@@ -2,7 +2,9 @@
 
 include('../../conexion.php');
 include('../../Login/iniciar.php');
- 
+include('../../validarsesion.php');
+$usuario = $_SESSION['usuario']; 
+validaradmin($usuario,$conexion);
  ?>
 
 
@@ -27,6 +29,7 @@ include('../../Login/iniciar.php');
 					<h2>Tabla Profesores</h2>
 					<input type="text" name="search" id="search" class="form-control" placeholder="Buscar en tabla" />  
 					<br>
+					<div class ='tableFixHead scroll' >
 						<table class="tabla" id="buscador">
 								<thead>
 								<tr>
@@ -55,31 +58,30 @@ include('../../Login/iniciar.php');
 								<a  href='updateprofes.php?rn=$mostrar[iddocente]&sn=$mostrar[nombre]&cl=$mostrar[apellido]'>Editar</a>
 								</button>
 
-								<button class='pop-up-del'>
-								<a>Borrar</a>
-								</button>
-								</td>
-								
-								</tr>
-								</tbody>
+								<button class='pop-up-del'>Borrar<p>".$mostrar['iddocente']."</p></button>
 								<div class='pop-up-borrar'>
 										<div>
 											<p>¿Esta seguro?</p>
-											<button class='pop-up-del'>
-												<a href='deleteprofes.php?pn=$mostrar[iddocente]'>Confirmar</a>
+											<button>
+												<a class='toDelete' href='deleteprofes.php?pn=replace'>Confirmar</a>
 											</button>
 											<br>
 											<br>
 											<input class= 'pop-up-cancel' type='button' value='Cancelar'>
 										</div>
-									</div>";
+									</div>
+								</td>
+								
+								</tr>
+								</tbody>";
 									
 							?>
 							
 						<?php 
 						}
 						?>	
-                    </table>
+					</table>
+					</div>
 				
 				</div>
 			
@@ -93,11 +95,11 @@ include('../../Login/iniciar.php');
 					<p>Nombre</p>
 					
 					<br>
-					<input type="text" name="nombre" placeholder="Primer nombre" maxlength="45" pattern="^[A-Za-z]+$" required oninvalid="this.setCustomValidity('Solo se aceptan letras')">
+					<input type="text" name="nombre" placeholder="Primer nombre" maxlength="45">
 					<p>Apellido</p>
 					
 					<br>
-					<input type="text" name="apellido" placeholder="Apellido" maxlength="45" pattern="^[A-Za-z]+$" required oninvalid="this.setCustomValidity('Solo se aceptan letras')">
+					<input type="text" name="apellido" placeholder="Apellido" maxlength="45">
 					<br>
 					<br>
 
@@ -115,6 +117,29 @@ include('../../Login/iniciar.php');
 			</div>
 	</div>
 	</div>
+	<?php
+       if(isset($_GET["fallo"]) && $_GET["fallo"] == 'true')
+       {
+          echo "
+            <div class='pop-up-error'>
+                <div>
+                    <p>Hubo Un Error Al Registrar</p>
+                    <input class='pop-up-cancel' type='button' value='Confirmar'>
+                </div>
+            </div> ";
+	   }
+	   if(isset($_GET["fallo2"]) && $_GET["fallo2"] == 'true')
+       {
+          echo "
+            <div class='pop-up-error'>
+                <div>
+                    <p>Hubo Un Error Al Borrar</p>
+                    <input class='pop-up-cancel' type='button' value='Confirmar'>
+                </div>
+            </div> ";
+       }
+     ?>
+
 
 
 	</body>

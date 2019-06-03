@@ -18,11 +18,11 @@ $q ="DELETE   from materia_docente where idmateria = '$idmateria' and iddocente=
 if(mysqli_query($conexion, $q))
 {
    
-    header("Location: https://universidad-class-test.herokuapp.com/Coordinador/matriculaDocente/matriculaDocente.php");
+    header("Location: http://localhost:8080/formulario/Coordinador/matriculaDocente/matriculaDocente.php");
 }
 else 
 {
-    echo"Error al borrar";
+    header("Location: http://localhost:8080/formulario/Coordinador/matriculaDocente/matriculaDocente.php?fallo3=true");
 }
 
 ?>

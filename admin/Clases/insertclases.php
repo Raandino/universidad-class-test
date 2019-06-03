@@ -5,17 +5,24 @@ include('../../Login/iniciar.php');
 	//recuperar las variables
 	$codigo=$_POST['codigo'];
 	$nombre=$_POST['nombre'];
+	$prereq=$_POST['prerequisito'];
 	
+		//Pasar el nombre de la facultad a id
+		$recuperarID="SELECT idmateria from materias where nombre='$prereq';";
+		$consulta = mysqli_query($conexion, $recuperarID);
+		$array = mysqli_fetch_array($consulta);
+		$idpre= $array['idmateria'];
 
 
 	//hacemos la sentencia de sql
-	$sql="INSERT into materias (codigo, nombre) VALUES('$codigo','$nombre')";
+	$sql="INSERT into materias (codigo, nombre, prerequisito) VALUES('$codigo','$nombre','$idpre')";
+	
 	
 	if(mysqli_query($conexion, $sql)){
-		header("Location: https://universidad-class-test.herokuapp.com/admin/Clases/clases.php");
+		header("Location: http://localhost:8080/formulario/admin/Clases/clases.php");
 	}
 	else{
-		echo "Error al insertar datos";
+		header("Location: http://localhost:8080/formulario/admin/Clases/clases.php?fallo=true");
 	
 		
 	}

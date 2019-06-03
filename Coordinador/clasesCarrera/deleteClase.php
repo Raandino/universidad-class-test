@@ -3,9 +3,13 @@ include('../../conexion.php');
 include('../../Login/iniciar.php');
 
 
+
 $materia = $_GET['rn'];
 $carrera = $_GET['sn'];
 $semestre = $_GET['pn'];
+
+echo $materia, $carrera, $semestre;
+
 
 //Recuperamos el idcarrera, ya que el coord mira el nombre de la carrera
 $recuperarID="SELECT idcarrera as idcarrera from oferta_academica where nombre='$carrera'";
@@ -24,11 +28,11 @@ $sql = "DELETE from pensum where idcarrera='$idcarrera' and semestre='$semestre'
 $data =  mysqli_query($conexion, $sql);
 if($data)
 {
-    header("Location: https://universidad-class-test.herokuapp.com/Coordinador/clasesCarrera/agregarClase.php");
+    header("Location: http://localhost:8080/formulario/Coordinador/clasesCarrera/agregarClase.php");
 }
 else 
 {
-    echo"Error al eliminar datos";
+    header("Location: http://localhost:8080/formulario/Coordinador/clasesCarrera/agregarClase.php?fallo2=true");
 
 }
 

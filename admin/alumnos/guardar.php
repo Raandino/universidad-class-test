@@ -14,17 +14,16 @@ include('../../Login/iniciar.php');
 	$array = mysqli_fetch_array($consulta);
 	$idcarrera= $array['idcarrera'];
 
-	//hacemos la sentencia de sql
+	//hacemos la sentencia de sql para insertar al alumno
 	$sql="INSERT into alumnos VALUES('$cif','$nombre','$apellido')";
 	$sqk="INSERT into oferta_alumnos VALUES ('$idcarrera','$cif')";
 	//verificamos la ejecucion
 
 	if(mysqli_query($conexion, $sql) && mysqli_query($conexion, $sqk)){
-		header("Location: https://universidad-class-test.herokuapp.com/admin/alumnos/alumnos.php");
+		header("Location: http://localhost:8080/formulario/admin/alumnos/alumnos.php");
 	}
 	else{
-		echo "Ya existe un alumno con ese numero de carnet";
-	
+		header("Location: http://localhost:8080/formulario/admin/alumnos/alumnos.php?fallo=true");	
 		
 	}
 	

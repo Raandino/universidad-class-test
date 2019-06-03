@@ -6,6 +6,7 @@ $idalumno = $_GET['sc'];
 $grupo = $_GET['gr'];
 
 
+
 //Convertir nombre de la materia a su id 
 $recuperarID="SELECT idmateria as idmateria from materias where nombre='$nombreMat'";
 	$consulta = mysqli_query($conexion, $recuperarID);
@@ -20,11 +21,11 @@ $data = mysqli_query($conexion, $query);
 if($data)
 {
    
-    header("Location: https://universidad-class-test.herokuapp.com/admin/matricula/matricula.php");
+    header("Location: http://localhost:8080/formulario/admin/matricula/matricula.php");
 }
 else 
 {
-    echo "Sorry, ERROR";
+    header("Location: http://localhost:8080/formulario/admin/matricula/matricula.php?fallo3=true");
 }
 
 ?>

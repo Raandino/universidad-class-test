@@ -1,6 +1,11 @@
 	<?php 
 		include('../../conexion.php');
 		include('../../Login/iniciar.php');
+		
+		include('../../validarsesion.php');
+		$usuario = $_SESSION['usuario']; 
+		validaradmin($usuario,$conexion);
+
 	?>
 
 
@@ -29,6 +34,7 @@
 						<h2>Tabla Alumnos</h2>
 						<input type="text" name="search" id="search" class="form-control" placeholder="Buscar en tabla" />  
 						<br>
+						<div class ='tableFixHead scroll' >
 							<table class="tabla" id="buscador">
 								<thead>
 									<tr>
@@ -56,35 +62,36 @@
 
 									<td>
 				
-									<button>
+									<button >
 									<a  href='update.php?rn=$mostrar[idalumno]&sn=$mostrar[nombre]&cl=$mostrar[apellido]&car=$mostrar[carrera]'>Editar</a>
 									</button>
 
-									<button class='pop-up-del'>
-									Borrar
-									</button>
+									<button class='pop-up-del' >Borrar<p>".$mostrar['idalumno']."</p></button>
+								
+										
+											<div class='pop-up-borrar'>
+											<div>
+											<p>¿Esta seguro?</p>
+											<button>
+											   <a class='toDelete' href='delete.php?rn=replace'>Confirmar</a>
+											   </button>
+											   <br>
+											   <br>
+											   <input class= 'pop-up-cancel' type='button' value='Cancelar'>
+										   </div>
+										</div>
+										
+									
 									</td>
 									
 									</tr>
-									</tbody>
-									<div class='pop-up-borrar'>
-										<div>
-											<p>¿Esta seguro?</p>
-											<button class='pop-up-del'>
-												<a href='delete.php?rn=$mostrar[idalumno]'>Confirmar</a>
-											</button>
-											<br>
-											<br>
-											<input class= 'pop-up-cancel' type='button' value='Cancelar'>
-										</div>
-									</div>";
+									</tbody>";
 										
-								?>
 								
-							<?php 
 							}
 							?>	
 						</table>
+						</div>
 					
 					</div>
 				
@@ -98,15 +105,16 @@
 					<p>Nombre</p>
 					
 					<br>
-					<input type="text" name="nombre" placeholder="Primer nombre" maxlength="25" pattern="^[A-Za-z]+$" required oninvalid="this.setCustomValidity('Solo se aceptan letras')">
-					<p>Apellido</p>
-					
+					<input type="text" name="nombre" placeholder="Primer nombre" maxlength="25"  required>
 					<br>
-					<input type="text" name="apellido" placeholder="Apellido" maxlength="25" pattern="^[A-Za-z]+$" required oninvalid="this.setCustomValidity('Solo se aceptan letras)">
+					<br>
+					<input type="text" name="apellido" placeholder="Apellido" maxlength="25" required>
 						<br>
-								<br>
+						<br>
+						<p>Seleccione una carrera</p>
 						<select name="carrera" required flex>
-                        <option required>--Carreras Disponibles--</option>
+                        <option >
+						</option>
 							<?php 
 									$sql="SELECT * from oferta_academica";
 									$result=mysqli_query($conexion,$sql);
@@ -141,19 +149,35 @@
 
 						
 					</form>
-					
+					<br>
 					<button class="pop-up-activate">Enviar</button>
 				</div>
 			
 		</div>
 		
 		</div>
-		<style>
-			.form {
-				width:250px;
-				height: 500px;
-			}
-		</style>
+		<?php
+       if(isset($_GET["fallo"]) && $_GET["fallo"] == 'true')
+       {
+          echo "
+            <div class='pop-up-error'>
+                <div>
+					<p>Ya existe un alumnno con esta identificacion</p>
+                    <input class='pop-up-cancel' type='button' value='Confirmar'>
+                </div>
+            </div> ";
+	   }
+	   if(isset($_GET["fallo2"]) && $_GET["fallo2"] == 'true')
+       {
+          echo "
+            <div class='pop-up-error'>
+                <div>
+					<p>Hubo Un Error Al Borrar</p>
+                    <input class='pop-up-cancel' type='button' value='Confirmar'>
+                </div>
+            </div> ";
+	   }
+     ?>
 	
 
 		</body>

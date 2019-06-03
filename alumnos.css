@@ -3,6 +3,26 @@
     padding: 0;
     
  }
+
+ input{
+     border-radius:0.9em;
+     height: 1.4em;
+     border: 0;
+ }
+ input::-webkit-input-placeholder { /*Chrome*/
+    padding-left: 5px;
+ }
+ input:-moz-placeholder { /* older Firefox*/
+    padding-left: 5px;
+   }
+ input::-moz-placeholder { /* Firefox 19+ */ 
+    padding-left: 5px;
+   } 
+ select{
+    border-radius:1em;
+    height: 1.4em;
+    border: 0;
+ }
  
  
  #container{
@@ -28,25 +48,26 @@
      min-width: 150px;
      width: 10%;
      height: 100vh;
-     background: rgb(46, 59, 73);
+     background: rgb(30, 38, 46);
      list-style: none;
      color: white;
      display: flex;
      flex-direction: column;
      align-items: center;
-     padding-top: 25px;
-   
+     padding-top: 2em;
  }
 
- .sidebar li {
-     padding-top: 6%;
-     height: 5%;
+ .sidebar a {
+     padding-top: 0.7em;
+     padding-bottom: 0.7em;
      width: 100%;
      text-align: center;
-     background-color:  rgb(46, 59, 73);
+     background-color:  rgb(30, 38, 46);
+     text-decoration: none !important;
  }
- .sidebar li:hover{
-    background-color: rgb(41, 158, 173);
+ .sidebar a:hover{
+    background-color: rgb(29, 119, 129);
+    color: black;
  }
 
  
@@ -61,6 +82,7 @@
  .contenedor-tabla h2{
      color: white;
      margin-bottom: 20px;
+     
  }
  
  .fondo{
@@ -97,29 +119,55 @@
  
  .form{
      color: white;
-     background: rgb(46, 59, 73);
+     background: rgb(30, 38, 46);
      margin-left: 50px;
-    
-     padding: 30px;
+     padding: 2em;
      text-align: center;
-     border : 5px solid #000;
+     border : 0.15em solid rgba(255, 255, 255, 0.685);
      width:250px;
-     height: 5  00px;
+     border-radius: 1.2em;
+     height: 75vh;
   
  }
- 
- .tabla{
-     color:white;
-     border:1px solid;
-     width:500px;
- }
- td{
-     text-align: center;
-     border: 1px solid;
-     font: 18px normal normal uppercase helvetica, arial, serif;
-     width: 100%;
- }
- 
+/*inicio de tabla*/
+ table{
+	background-color: white;
+	text-align: left;
+	border-collapse: collapse;
+    width: 100%;
+    border-radius: 1em;
+    -webkit-border-radius: 1em;
+    -moz-border-radius: 1em;
+}
+
+th{
+    padding: 1.3em;
+    text-align: center;
+    
+}
+td{
+    padding: 1.3em;
+    text-align: center;
+    border: solid black 1px;
+    
+}
+
+thead tr td{
+	background-color: rgb(12, 43, 40);
+	border-bottom: solid 5px rgb(12, 43, 40);
+	color: white;
+}
+
+tr:nth-child(even){
+	background-color: #ddd;
+}
+
+
+tbody tr:hover td{
+    background-color:  rgba(12, 43, 40, 0.747);
+    color: white;
+}
+/*Fin de tabla*/
  .btcolor{
      
      width:70px;
@@ -147,34 +195,28 @@
      padding:2px;
  }
  a{
-     color:white;
+     color:black;
      font: 14px normal normal uppercase helvetica, arial, serif;
      
  }
 
- td{
-     padding: 5px;
- }
- td:hover{
-     color:rgb(29, 119, 129);
- }
+
 .menu{
     color:white;
      font: 16px normal normal uppercase helvetica, arial, serif;
 }
+.toggle-side{
+    color: black;
+    background-color: rgb(29, 119, 129) !important;
+}
 
 .mainh2{
     color: white;
-    margin-bottom: 10%;
+    margin-bottom: 20%;
+    text-align: center;
 }
 
- #btn-createDB{
-    color: white;
-    padding-left: 25px;
-    padding-right: 25px;
-    
-    
- }
+
 #main-repair{
     text-align:center;
     height:auto;
@@ -193,3 +235,72 @@
     z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
     cursor: pointer; /* Add a pointer on hover */
   }
+
+  #config-footer{
+      margin-top: auto;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+.tabla{
+    border: none;
+    
+}
+
+.tabla td{
+    border: 1px solid black;
+}
+
+.tabla tr:first-child td{
+    border-top: none;
+}
+
+.tabla tr:last-child td{
+    border-bottom: none;
+}
+
+.tabla tr td:first-child{
+    border-left: none;
+}
+
+.tabla tr td:last-child{
+    border-right: none;
+}
+
+
+
+.tableFixHead { 
+    overflow-y: auto; 
+    height: 71.5vh; 
+}
+.tableFixHead thead tr td{ 
+    position: sticky;
+    top: 0; 
+    z-index: 950;
+}
+.scroll::-webkit-scrollbar {
+    width: 10px;
+ 
+  }
+   
+  .scroll::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 20px;
+  }
+  
+  .scroll::-webkit-scrollbar-track {
+    background: #ddd;
+    border-radius: 20px;
+  }
+menu {
+    z-index: 900;
+}

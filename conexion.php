@@ -1,8 +1,8 @@
 <?php
 
-	$servername = "universidadtest.crxav7eabiql.us-east-2.rds.amazonaws.com";
-	$username = "admin";
-	$password = "12345678";
+	$servername = "localhost";
+	$username = "root";
+	$password = "";
 	
 
 	// Create connection
@@ -11,12 +11,10 @@
 	// Check connection
 	if ($conn->connect_error) {
     		die("Connection failed: " . $conn->connect_error);
-	}else{
-
 	}
 
 	
-	$conexion=mysqli_connect($servername,$username,$password,'universidad_test');
+	$conexion=mysqli_connect($servername,$username,$password,'universidad');
 
 
 	

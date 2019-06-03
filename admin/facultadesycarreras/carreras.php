@@ -2,7 +2,10 @@
 
 include('../../conexion.php');
 include('../../Login/iniciar.php');
- 
+
+include('../../validarsesion.php');
+$usuario = $_SESSION['usuario']; 
+validaradmin($usuario,$conexion);
  ?>
 
 
@@ -27,20 +30,22 @@ include('../../Login/iniciar.php');
 					<h2>Facultades y Carreras</h2>
 					<input type="text" name="search" id="search" class="form-control" placeholder="Buscar en tabla" />  
 					<br>
+					<div class ='tableFixHead scroll' >
 						<table class="tabla" id="buscador">
 								<thead>
 								<tr>
 									<td>Id Facultad</td>
 									<td>Facultad</td>
 									<td>Id carrera</td>
-									<td>Carrera</td>	
+									<td>Carrera</td>
+									<td>Acciones</td>	
 								</tr>
 								</thead>
 
 							<?php 
-							$sql="SELECT distinct facultades.idfacultad as idfacultad, facultades.nombre_facultad as nombref, oferta_academica.idoferta as idcarrera, oferta_academica.nombre as nombrec 
-                            from facultades, oferta_academica
-                            where facultades.idfacultad = oferta_academica.idfacultad";
+							$sql="SELECT distinct oferta_academica.idcarrera as id,   facultades.idfacultad as idfacultad, facultades.nombre_facultad as nombref, oferta_academica.idoferta as idcarrera, oferta_academica.nombre as nombrec 
+							from facultades, oferta_academica
+							where facultades.idfacultad = oferta_academica.idfacultad";
 							$result=mysqli_query($conexion,$sql);
 
 							while($mostrar=mysqli_fetch_array($result)){
@@ -50,7 +55,22 @@ include('../../Login/iniciar.php');
 								<td>".$mostrar['idfacultad']."</td>
 								<td>".$mostrar['nombref']."</td>
                                 <td>".$mostrar['idcarrera']."</td>
-                                <td>".$mostrar['nombrec']."</td>
+								<td>".$mostrar['nombrec']."</td>
+								
+								<td>
+								<button class='pop-up-del' >Borrar<p>".$mostrar['idcarrera']."</p></button>
+								<div class='pop-up-borrar'>
+											<div>
+											<p>¿Esta seguro?</p>
+											<button>
+											   <a class='toDelete' href='deleteCarrera.php?rn=replace'>Confirmar</a>
+											   </button>
+											   <br>
+											   <br>
+											   <input class= 'pop-up-cancel' type='button' value='Cancelar'>
+										   </div>
+										</div>
+								</td>
                                 </tbody>
                                 ";
 									
@@ -59,7 +79,8 @@ include('../../Login/iniciar.php');
 						<?php 
 						}
 						?>	
-                    </table>
+					</table>
+					</div>
 				
 				</div>
 			
@@ -73,13 +94,13 @@ include('../../Login/iniciar.php');
 
 					<p>Nombre</p>		
 					<br>
-					<input type="text" name="nombre" placeholder="Nombre de la Carrera" maxlength="45" required oninvalid="this.setCustomValidity('Solo se aceptan letras')">
+					<input type="text" name="nombre" placeholder="Nombre de la Carrera" maxlength="45"  required>
 					<br>
 					<br>
 
 					<p>Pregrado o Posgrado</p>
-					<select name="tipo">
-                        <option>--Opciones--</option>
+					<select name="tipo" required>
+                        <option ></option>
 						<option>Pregrado</option>
 						<option>Posgrado</option>
                 	
@@ -90,8 +111,8 @@ include('../../Login/iniciar.php');
 
 
 					<p>Facultad</p>
-                    <select name="nombreFac">
-                        <option>--Facultades--</option>
+                    <select name="nombreFac" required>
+                        <option ></option>
                     <?php 
 							$sql="SELECT * from facultades";
                             $result=mysqli_query($conexion,$sql);
@@ -126,6 +147,19 @@ include('../../Login/iniciar.php');
 			</div>
 	</div>
 	</div>
+	<?php
+       if(isset($_GET["fallo"]) && $_GET["fallo"] == 'true')
+       {
+          echo "
+            <div class='pop-up-error'>
+                <div>
+                    <p>Error Al Registrar La Carrera</p>
+                    <input class='pop-up-cancel' type='button' value='Confirmar'>
+                </div>
+            </div> ";
+	   }
+     ?>
+
 
 	</body>
 	<script src="../../pop-up.js"></script>

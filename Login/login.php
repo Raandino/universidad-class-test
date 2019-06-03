@@ -36,23 +36,30 @@
                                 Iniciar Sesion 
                             </button>
                         </div>
-
+                      
 
 
                     </form>
                 </div>
-            </div>   
+            </div>  
 
-            <div class="pop-up">
-							<div >
-							<p>Contraseña o sss Incorrectos</p>
-							<input class="pop-up-cancel" type="button" value="Confirmar">
-							</div>
-						</div> 
+            <?php
+       if(isset($_GET["fallo"]) && $_GET["fallo"] == 'true')
+       {
+          echo "
+            <div class='pop-up-error'>
+                <div>
+                    <p>Contraseña o Usuario Incorrectos</p>
+                    <input class='pop-up-cancel' type='button' value='Confirmar'>
+                </div>
+            </div> ";
+       }
+     ?>
+
         
 
 </body>
-
+<script src="../pop-up.js"></script>
 
 </html>
 

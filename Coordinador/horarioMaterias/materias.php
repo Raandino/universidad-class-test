@@ -2,7 +2,14 @@
 
 include('../../conexion.php');
 include('../../Login/iniciar.php');
- 
+$usuario = $_SESSION['usuario'];
+
+include('../../validarsesion.php');
+validarcoor($usuario,$conexion);
+$recuperarID="SELECT idcarrera from coordinadores where idcoordinador='$usuario';";
+$consulta = mysqli_query($conexion, $recuperarID);
+$array = mysqli_fetch_array($consulta);
+$idcar= $array['idcarrera'];
  ?>
 
 
@@ -24,25 +31,27 @@ include('../../Login/iniciar.php');
 
 		<div id="main">
 				<div class="contenedor-tabla"> 
-					<h2>Tabla Materias</h2>
+					<h2>Tabla Clases</h2>
 					<input type="text" name="search" id="search" class="form-control" placeholder="Buscar en tabla" />  
 					<br>
+					<div class ='tableFixHead scroll' >
 						<table class="tabla" id="buscador">
 								<thead>
 								<tr>
-									<td>Id Materia</td>
+									<td>Codigo</td>
 									<td>Nombre</td>
 								
 									<td>Hora de inicio</td>
 									<td>Hora Final</td>
 									<td>Dia</td>
 									<td>Grupo</td>
+									<td>Aula</td>
 									<td>Acciones</td>
 										
 								</tr>
 								</thead>
 							<?php 
-							$sql="SELECT materias.idmateria as idmateria, materias.nombre as nombre, hora_materia.horainicio as inicio, hora_materia.horfinal as final , hora_materia.dia as dia, hora_materia.idgrupo as grupo
+							$sql="SELECT materias.idmateria as idmateria, materias.nombre as nombre, hora_materia.horainicio as inicio, hora_materia.horfinal as final , hora_materia.dia as dia, hora_materia.idgrupo as grupo, hora_materia.aula as aula
 							from hora_materia, materias
 							where materias.idmateria=hora_materia.idmateria;";
 							$result=mysqli_query($conexion,$sql);
@@ -57,6 +66,7 @@ include('../../Login/iniciar.php');
 								<td>".$mostrar['final']."</td>
 								<td>".$mostrar['dia']."</td>
 								<td>".$mostrar['grupo']."</td>
+								<td>".$mostrar['aula']."</td>
 								
 
 								<td>
@@ -64,31 +74,32 @@ include('../../Login/iniciar.php');
 								<a  href='updatemate.php?rn=$mostrar[idmateria]&sn=$mostrar[nombre]&gr=$mostrar[grupo]&ini=$mostrar[inicio]&fin=$mostrar[final]&dia=$mostrar[dia]'>Editar</a>
 								</button>
 
-								<button class='pop-up-del'>
-								<a>Borrar</a>
-								</button>
-								</td>
-								
-								</tr>
-								</tbody>
+								<button class='pop-up-del-multi'>Borrar<p>".$mostrar['idmateria']."</p><p>".$mostrar['inicio']."</p><p>".$mostrar['final']."</p><p>".$mostrar['dia']."</p><p>".$mostrar['grupo']."</p></button>
 								<div class='pop-up-borrar'>
 										<div>
 											<p>¿Esta seguro?</p>
-											<button class='pop-up-del'>
-												<a href='deletemate.php?id=$mostrar[idmateria]&hi=$mostrar[inicio]&hf=$mostrar[final]&dia=$mostrar[dia]&gp=$mostrar[grupo]'>Confirmar</a>
+											<button>
+												<a class='toDelete' href='deletemate.php?id=replace&hi=replace2&hf=replace3&dia=replace4&gp=replace5'>Confirmar</a>
 											</button>
 											<br>
 											<br>
 											<input class= 'pop-up-cancel' type='button' value='Cancelar'>
 										</div>
-									</div>";
+									</div>
+
+								</td>
+								
+								</tr>
+								</tbody>
+								";
 									
 							?>
 							
 						<?php 
 						}
 						?>	
-                    </table>
+					</table>
+					</div>
 				
 				</div>
 			
@@ -97,12 +108,12 @@ include('../../Login/iniciar.php');
 			<br>
 				<form action="insertmate.php" method="POST" autocomplete="off">
 					
-				<p>Nombre de la Materia</p>	
+				<p>Nombre de la Clase</p>	
 	
-					<select name="nombreMateria">
-                        <option >--Materias Disponibles--</option>
+					<select name="nombreMateria" required>
+                        <option ></option>
                     <?php 
-							$sql="SELECT * from materias";
+							$sql="SELECT materias.nombre from pensum, materias where idcarrera='$idcar' and pensum.idmateria=materias.idmateria;";
                             $result=mysqli_query($conexion,$sql);
                             
 							while($ensenar=mysqli_fetch_array($result)){
@@ -134,8 +145,8 @@ include('../../Login/iniciar.php');
 					<br>
 
 					<p>Dia</p>
-						<select name="dia">
-						<option>--Dias diponibles--</option>
+						<select name="dia" required>
+						<option></option>
 						<option>Lunes</option>
 						<option>Martes</option>
 						<option>Miercoles</option>
@@ -145,7 +156,11 @@ include('../../Login/iniciar.php');
 					
 					<br>
 					<br>
-
+					
+					<p>Aula</p>
+					<input type="text" name="aula" placeholder="Aula" maxlength="5"  required>
+					<br>
+					<br>
 					
 			
 
@@ -163,9 +178,31 @@ include('../../Login/iniciar.php');
 			</div>
 	</div>
 	</div>
+	<?php
+       if(isset($_GET["fallo"]) && $_GET["fallo"] == 'true')
+       {
+          echo "
+            <div class='pop-up-error'>
+                <div>
+                    <p>Hubo Un Error Al Registrar La Clase</p>
+                    <input class='pop-up-cancel' type='button' value='Confirmar'>
+                </div>
+            </div> ";
+	   }
+	   if(isset($_GET["fallo2"]) && $_GET["fallo2"] == 'true')
+       {
+          echo "
+            <div class='pop-up-error'>
+                <div>
+                    <p>Hubo Un Error Al Borrar La Clase</p>
+                    <input class='pop-up-cancel' type='button' value='Confirmar'>
+                </div>
+            </div> ";
+       }
+     ?>
 
 
 	</body>
 	<script src="../../pop-up.js"></script>
 	</html>
-	<?php include ('../main/searchbar.php')?>
+	<?php include ('../../admin/main/searchbar.php')?>
