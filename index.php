@@ -8,7 +8,7 @@
 </head>
 <body>
     
-<form action="Login/login.php"><!-- Esto es BackEnd-->
+<form action="creardb.php"><!-- Esto es BackEnd-->
     <h1>Funciono devuelta </h1><!-- Esto es FrontEnd -->
     <td colspan="2" align="center"><input type="submit" name="enviando" id="enviando" value="entar"></td>
     </form>
