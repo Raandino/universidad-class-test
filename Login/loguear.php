@@ -17,13 +17,10 @@ $array = mysqli_fetch_array($consulta);
 while($array['usuario'] == $usuario && $array['cargo'] == 'admin'){
 
 
-//if(password_verify ($clave1, $array['clave'])){
-//    $contador++;
-//}
-
-if($clave1== $array['clave']){
+if(password_verify ($clave1, $array['clave'])){
     $contador++;
 }
+
 
 else if($clave1 == $array['clave']){
     $contador++;
