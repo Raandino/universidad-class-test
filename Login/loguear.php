@@ -23,11 +23,11 @@ $array = mysqli_fetch_array($consulta);
 
 if($contador>0){
     $_SESSION['usuario'] = $usuario; //nuevo
-    header("Location:http://localhost:8080/formulario/admin/main/main.php");
+    header("Location:https://universidad-class-test.herokuapp.com/admin/main/main.php");
 }
 
 else{
-    header("Location:http://localhost:8080/formulario/Login/login.php?fallo=true");
+    header("Location:https://universidad-class-test.herokuapp.com/Login/login.php?fallo=true");
 }
 //}
 
