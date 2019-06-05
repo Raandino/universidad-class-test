@@ -15,11 +15,11 @@ include('../../conexion.php');
 	$sql="INSERT INTO docentes (iddocente, nombre, segundoNombre, apellido, segundoApellido, sexo, correo, telefono) VALUES('$iddocente','$nombre','$segundonombre', '$apellido','$segundoapellido', '$sexo', '$correo', '$telefono')";
 	//verificamos la ejecucion
 	if(mysqli_query($conexion, $sql)){
-		header("Location: http://localhost:8080/formulario/admin/profesores/profesores.php");
+		header("Location: https://universidad-class-test.herokuapp.com/admin/profesores/profesores.php");
 			
 	}
 	else{
-		header("Location: http://localhost:8080/formulario/admin/profesores/profesores.php?fallo=true");
+		header("Location: https://universidad-class-test.herokuapp.com/admin/profesores/profesores.php?fallo=true");
 	
 		
 	}

@@ -31,18 +31,18 @@ $usuario = $_SESSION['usuario']; //id del alumno
 					$sql="INSERT INTO materias_alumnos(idmateria, idalumno, idgrupo) VALUES('$idmateria','$usuario','$grupo')";
 					//verificamos la ejecucion
 					if(mysqli_query($conexion, $sql)){
-						header("Location: http://localhost:8080/formulario/LoginAlumnos/inscribirMat/inscribirMat.php");
+						header("Location: https://universidad-class-test.herokuapp.com/LoginAlumnos/inscribirMat/inscribirMat.php");
 							
 					}
 					else{
-						header("Location: http://localhost:8080/formulario/LoginAlumnos/inscribirMat/inscribirMat.php?fallo=true");
+						header("Location: https://universidad-class-test.herokuapp.com/LoginAlumnos/inscribirMat/inscribirMat.php?fallo=true");
 				
 						
 					}
 			}
 			else 
 			{
-				header("Location: http://localhost:8080/formulario/LoginAlumnos/inscribirMat/inscribirMat.php?fallo2=true");
+				header("Location: https://universidad-class-test.herokuapp.com/LoginAlumnos/inscribirMat/inscribirMat.php?fallo2=true");
 			
 			}
 	}
@@ -78,24 +78,24 @@ $usuario = $_SESSION['usuario']; //id del alumno
 						$sql="INSERT INTO materias_alumnos(idmateria, idalumno, idgrupo) VALUES('$idmateria','$usuario','$grupo')";
 						//verificamos la ejecucion
 						if(mysqli_query($conexion, $sql)){
-							header("Location: http://localhost:8080/formulario/LoginAlumnos/inscribirMat/inscribirMat.php");
+							header("Location: https://universidad-class-test.herokuapp.com/LoginAlumnos/inscribirMat/inscribirMat.php");
 								
 						}
 						else{
-							header("Location: http://localhost:8080/formulario/LoginAlumnos/inscribirMat/inscribirMat.php?fallo=true");
+							header("Location: https://universidad-class-test.herokuapp.com/LoginAlumnos/inscribirMat/inscribirMat.php?fallo=true");
 					
 							
 						}
 				}
 				else 
 				{
-					header("Location: http://localhost:8080/formulario/LoginAlumnos/inscribirMat/inscribirMat.php?fallo2=true");
+					header("Location: https://universidad-class-test.herokuapp.com/LoginAlumnos/inscribirMat/inscribirMat.php?fallo2=true");
 				
 				}
 	}
 	else
 	{ 
-		header("Location: http://localhost:8080/formulario/LoginAlumnos/inscribirMat/inscribirMat.php?fallo3=true");//No ha aprobado el prerequisito para esta clase
+		header("Location: https://universidad-class-test.herokuapp.com/LoginAlumnos/inscribirMat/inscribirMat.php?fallo3=true");//No ha aprobado el prerequisito para esta clase
 	}
 }
 

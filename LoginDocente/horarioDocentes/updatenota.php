@@ -14,10 +14,10 @@ $query ="UPDATE notas SET  nota= '$nota' WHERE idalumno='$idalumno' and idmateri
 
 if(mysqli_query($conexion, $query))
 {
-    header("Location: http://localhost:8080/formulario/LoginDocente/horarioDocentes/notas.php?rn=$nombreMateria&gr=$grupo");
+    header("Location: https://universidad-class-test.herokuapp.com/LoginDocente/horarioDocentes/notas.php?rn=$nombreMateria&gr=$grupo");
 }
 else{
-    header("Location: http://localhost:8080/formulario/LoginDocente/horarioDocentes/notas.php?rn=$nombreMateria&gr=$grupo&fallo=true");
+    header("Location: https://universidad-class-test.herokuapp.com/LoginDocente/horarioDocentes/notas.php?rn=$nombreMateria&gr=$grupo&fallo=true");
 }
 
 

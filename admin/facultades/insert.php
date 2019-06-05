@@ -16,11 +16,11 @@ include('../../conexion.php');
 	$sql="INSERT into facultades (idfacultad, nombre_facultad) values ('$idfacultad','$nombre');";
 	//verificamos la ejecucion
 	if(mysqli_query($conexion, $sql)){
-		header("Location: http://localhost:8080/formulario/admin/facultades/facultades.php");
+		header("Location: https://universidad-class-test.herokuapp.com/admin/facultades/facultades.php");
 			
 	}
 	else{
-		header("Location: http://localhost:8080/formulario/admin/facultades/facultades.php?fallo=true");
+		header("Location: https://universidad-class-test.herokuapp.com/admin/facultades/facultades.php?fallo=true");
 		
 	}
 ?>

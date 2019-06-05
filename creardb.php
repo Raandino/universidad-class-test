@@ -1,6 +1,8 @@
 <?php
 
-$link = mysqli_connect("localhost", "root", "");
+$link = mysqli_connect("universidadtest.crxav7eabiql.us-east-2.rds.amazonaws.com:3306", 
+                        "admin",
+                         "0011202001");
  
 // Check connection
 if($link === false){
@@ -15,7 +17,10 @@ if(mysqli_query($link, $base)){
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
 
-$conn = mysqli_connect("localhost", "root", "", "universidad");
+$conn = mysqli_connect("universidadtest.crxav7eabiql.us-east-2.rds.amazonaws.com:3306",
+                        "admin",
+                        "0011202001", 
+                        "universidad");
 
 //tabla facultades
 $facultades= "CREATE table if not exists facultades(
@@ -524,7 +529,7 @@ if (mysqli_query($conn, $coord)) {
 
 
 
-       header("Location: http://localhost:8080/formulario/Login/login.php");
+       header("Location: https://universidad-class-test.herokuapp.com/Login/login.php");
 
  
 // Close connection

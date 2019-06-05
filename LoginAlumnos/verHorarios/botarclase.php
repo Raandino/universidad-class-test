@@ -15,11 +15,11 @@ $data =  mysqli_query($conexion, $sql);
 if($data)
 {
    
-    header("Location: http://localhost:8080/formulario/LoginAlumnos/verHorarios/verHorarios.php");
+    header("Location: https://universidad-class-test.herokuapp.com/LoginAlumnos/verHorarios/verHorarios.php");
 }
 else 
 {
-    header("Location: http://localhost:8080/formulario/LoginAlumnos/verHorarios/verHorarios.php?fallo3=true");
+    header("Location: https://universidad-class-test.herokuapp.com/LoginAlumnos/verHorarios/verHorarios.php?fallo3=true");
 
 }
 

@@ -28,11 +28,11 @@ $sql = "DELETE from pensum where idcarrera='$idcarrera' and semestre='$semestre'
 $data =  mysqli_query($conexion, $sql);
 if($data)
 {
-    header("Location: http://localhost:8080/formulario/Coordinador/clasesCarrera/agregarClase.php");
+    header("Location: https://universidad-class-test.herokuapp.com/Coordinador/clasesCarrera/agregarClase.php");
 }
 else 
 {
-    header("Location: http://localhost:8080/formulario/Coordinador/clasesCarrera/agregarClase.php?fallo2=true");
+    header("Location: https://universidad-class-test.herokuapp.com/Coordinador/clasesCarrera/agregarClase.php?fallo2=true");
 
 }
 

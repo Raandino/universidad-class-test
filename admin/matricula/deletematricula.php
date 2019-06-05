@@ -21,11 +21,11 @@ $data = mysqli_query($conexion, $query);
 if($data)
 {
    
-    header("Location: http://localhost:8080/formulario/admin/matricula/matricula.php");
+    header("Location: https://universidad-class-test.herokuapp.com/admin/matricula/matricula.php");
 }
 else 
 {
-    header("Location: http://localhost:8080/formulario/admin/matricula/matricula.php?fallo3=true");
+    header("Location: https://universidad-class-test.herokuapp.com/admin/matricula/matricula.php?fallo3=true");
 }
 
 ?>

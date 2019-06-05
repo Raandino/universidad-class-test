@@ -62,7 +62,7 @@ $nombrefacultad =$_GET['sn']; //nombre
             //$data = mysqli_query($conexion, $sqk) && mysqli_query($conexion, $query);
             if( mysqli_query($conexion, $sql) )
             {
-                header("Location: http://localhost:8080/formulario/admin/facultades/facultades.php");
+                header("Location: https://universidad-class-test.herokuapp.com/admin/facultades/facultades.php");
             }
             else{
                echo"nepe";

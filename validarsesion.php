@@ -12,7 +12,7 @@ function validaradmin($usuario,$conexion)
     }
     else if ($arrayd['validacion']==0)
     {
-        header("Location: http://localhost:8080/formulario/Login/login.php");
+        header("Location: https://universidad-class-test.herokuapp.com/Login/login.php");
     }
 }
 
@@ -28,7 +28,7 @@ function validaralumno($usuario,$conexion)
     }
     else if ($arrayd['validacion']==0)
     {
-        header("Location: http://localhost:8080/formulario/Login/login.php");
+        header("Location: https://universidad-class-test.herokuapp.com/Login/login.php");
     }
 }
 
@@ -44,7 +44,7 @@ function validarprofe($usuario,$conexion)
     }
     else if ($arrayd['validacion']==0)
     {
-        header("Location: http://localhost:8080/formulario/Login/login.php");
+        header("Location: https://universidad-class-test.herokuapp.com/Login/login.php");
     }
 }
 
@@ -60,7 +60,7 @@ function validarcoor($usuario,$conexion)
     }
     else if ($arrayd['validacion']==0)
     {
-        header("Location: http://localhost:8080/formulario/Login/login.php");
+        header("Location: https://universidad-class-test.herokuapp.com/Login/login.php");
     }
 }
 

@@ -116,10 +116,10 @@ $nombrecarrera = $_GET['nom'];//nombre de la carrera
             //$data = mysqli_query($conexion, $sqk) && mysqli_query($conexion, $query);
             if(mysqli_query($conexion, $query) && mysqli_query($conexion, $sql) )
             {
-                header("Location: http://localhost:8080/formulario/admin/alumnos/alumnos.php");
+                header("Location: https://universidad-class-test.herokuapp.com/admin/alumnos/alumnos.php");
             }
             else{
-                header("Location: http://localhost:8080/formulario/admin/alumnos/alumnos.php?fallo=true");
+                header("Location: https://universidad-class-test.herokuapp.com/admin/alumnos/alumnos.php?fallo=true");
             }
         }
       

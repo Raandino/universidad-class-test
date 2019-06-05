@@ -46,22 +46,22 @@ include('../../conexion.php');
 					$sql="INSERT INTO materia_docente(idmateria, iddocente, idgrupo) VALUES('$idmateria','$iddocente','$grupo')";
 					//verificamos la ejecucion
 					if(mysqli_query($conexion, $sql)){
-						header("Location: http://localhost:8080/formulario/Coordinador/matriculaDocente/matriculaDocente.php");
+						header("Location: https://universidad-class-test.herokuapp.com/Coordinador/matriculaDocente/matriculaDocente.php");
 							
 					}
 					else{
-						header("Location: http://localhost:8080/formulario/Coordinador/matriculaDocente/matriculaDocente.php?fallo=true");
+						header("Location: https://universidad-class-test.herokuapp.com/Coordinador/matriculaDocente/matriculaDocente.php?fallo=true");
 						
 					}
 			}
 			else 
 			{
-				header("Location: http://localhost:8080/formulario/Coordinador/matriculaDocente/matriculaDocente.php?fallo2=true");
+				header("Location: https://universidad-class-test.herokuapp.com/Coordinador/matriculaDocente/matriculaDocente.php?fallo2=true");
 			}
 	}
 	else 
 	{
-		header("Location: http://localhost:8080/formulario/Coordinador/matriculaDocente/matriculaDocente.php?fallo4=true");//El grupo de la materia seleccionada no existe
+		header("Location: https://universidad-class-test.herokuapp.com/Coordinador/matriculaDocente/matriculaDocente.php?fallo4=true");//El grupo de la materia seleccionada no existe
 	}
 
 

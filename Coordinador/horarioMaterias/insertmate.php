@@ -35,19 +35,19 @@ include('../../conexion.php');
 			//verificamos la ejecucion
 			if (mysqli_query($conexion, $horario) ){
 			
-				header("Location: http://localhost:8080/formulario/Coordinador/horarioMaterias/materias.php");
+				header("Location: https://universidad-class-test.herokuapp.com/Coordinador/horarioMaterias/materias.php");
 					
 			}
 			else{
-				header("Location: http://localhost:8080/formulario/Coordinador/horarioMaterias/materias.php?fallo=true");
+				header("Location: https://universidad-class-test.herokuapp.com/Coordinador/horarioMaterias/materias.php?fallo=true");
 				
 			}	
 			}
 			else { 
-				header("Location: http://localhost:8080/formulario/Coordinador/horarioMaterias/materias.php?fallo3=true");}//horas no son validas
+				header("Location: https://universidad-class-test.herokuapp.com/Coordinador/horarioMaterias/materias.php?fallo3=true");}//horas no son validas
 		}
 		else {
-			header("Location: http://localhost:8080/formulario/Coordinador/horarioMaterias/materias.php?fallo4=true");//el aula seleccionada ya esta ocupada en esas horas
+			header("Location: https://universidad-class-test.herokuapp.com/Coordinador/horarioMaterias/materias.php?fallo4=true");//el aula seleccionada ya esta ocupada en esas horas
 		}
 	
 	

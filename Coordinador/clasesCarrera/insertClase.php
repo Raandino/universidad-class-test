@@ -25,10 +25,10 @@ include('../../Login/iniciar.php');
 	//verificamos la ejecucion
 
 	if(mysqli_query($conexion, $sql)){
-		header("Location: http://localhost:8080/formulario/Coordinador/clasesCarrera/agregarClase.php");
+		header("Location: https://universidad-class-test.herokuapp.com/Coordinador/clasesCarrera/agregarClase.php");
 	}
 	else{
-		header("Location: http://localhost:8080/formulario/Coordinador/clasesCarrera/agregarClase.php?fallo=true");
+		header("Location: https://universidad-class-test.herokuapp.com/Coordinador/clasesCarrera/agregarClase.php?fallo=true");
 	
 		
 	}

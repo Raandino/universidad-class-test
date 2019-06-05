@@ -73,7 +73,7 @@
       
       
       
-      header("Location: http://localhost:8080/formulario/Login/login.php");
+      header("Location: https://universidad-class-test.herokuapp.com/Login/login.php");
 
  
 // Close connection

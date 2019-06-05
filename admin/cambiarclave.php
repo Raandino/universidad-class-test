@@ -84,10 +84,10 @@ $usuario = $_SESSION['usuario'];
                             $data = mysqli_query($conexion, $query);
                             if($data)
                             {
-                                header("Location: http://localhost:8080/formulario/Login/login.php");
+                                header("Location: https://universidad-class-test.herokuapp.com/Login/login.php");
                             }
                             else{
-                                header("Location: http://localhost:8080/formulario/Login/login.php");
+                                header("Location: https://universidad-class-test.herokuapp.com/Login/login.php");
                             }
                             
                         }
@@ -99,15 +99,15 @@ $usuario = $_SESSION['usuario'];
                             $data = mysqli_query($conexion, $query);
                             if($data)
                             {
-                                header("Location: http://localhost:8080/formulario/Login/login.php");
+                                header("Location: https://universidad-class-test.herokuapp.com/Login/login.php");
                             }
                             else{
-                                header("Location: http://localhost:8080/formulario/Login/login.php");
+                                header("Location: https://universidad-class-test.herokuapp.com/Login/login.php");
                             }
                         }
 
                         else{
-                            header("Location: http://localhost:8080/formulario/Login/login.php?fallo2=true");  //Contraseña actual no valida
+                            header("Location: https://universidad-class-test.herokuapp.com/Login/login.php?fallo2=true");  //Contraseña actual no valida
                         }
                                 
                        
@@ -118,7 +118,7 @@ $usuario = $_SESSION['usuario'];
 
                     }
                 else {
-                    header("Location: http://localhost:8080/formulario/admin/cambiarclave.php?fallo=true"); //Contraseñas no coinciden
+                    header("Location: https://universidad-class-test.herokuapp.com/admin/cambiarclave.php?fallo=true"); //Contraseñas no coinciden
                 }
             
 
