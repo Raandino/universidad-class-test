@@ -6,7 +6,7 @@
     $sql="INSERT into login VALUES('$usuario','$clave')";
 
     if(mysqli_query($conexion, $sql)){
-		header("Location: http://localhost:8080formulario/Login/login.php");
+		header("Location: https://universidad-class-test.herokuapp.com/Login/login.php");
 		
     }
     else{
