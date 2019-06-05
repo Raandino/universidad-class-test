@@ -38,15 +38,15 @@ $usuario = $_SESSION['usuario'];
         <br>
 		<p>Ingrese la contraseña antigua</p>
 		<br>
-        <input type="password" name="oldclave" minlength="8" placeholder="Contraseña actual" maxlength="10" required="required" >
+        <input type="password" name="oldclave" minlength="8" placeholder="Contraseña actual" maxlength="12" required="required" >
         <br>
         <br>
         <p>Ingrese la nueva contraseña</p>
         <br>
-        <input type="password" name="newclave" minlength="8" placeholder="Nueva contraseña" maxlength="10" required="required" >
+        <input type="password" name="newclave" minlength="8" placeholder="Nueva contraseña" minlength="8" maxlength="12" required="required" >
         <br>
         <br>
-        <input type="password" name="claverep" minlength="8" placeholder="Repita la contraseña" maxlength="10" required="required">
+        <input type="password" name="claverep" minlength="8" placeholder="Repita la contraseña" minlength="8" maxlength="12" required="required">
         <br>
 		<br>
 		<div class="pop-up">
@@ -78,7 +78,7 @@ $usuario = $_SESSION['usuario'];
                             $array = mysqli_fetch_array($consulta);
 
                             if(password_verify($oldclave, $array['clave'])){
-                            $clavecrypt = password_hash($newclave, PASSWORD_DEFAULT);
+                            $clavecrypt = password_hash($newclave, PASSWORD_DEFAULT, ['cost'=>5]);
 
                             $query ="UPDATE login SET  clave= '$clavecrypt' WHERE usuario='$usuario' ";
                             $data = mysqli_query($conexion, $query);

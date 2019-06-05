@@ -40,14 +40,19 @@
 									<tr>
 										<td>Id Alumno</td>
 										<td>Nombre</td>
+										<td>Segundo Nombre</td>
 										<td>Apellido</td>
-                                        <td>Carrera</td>
+										<td>Segundo Apellido</td>
+										<td>Sexo</td>
+										<td>Telefono</td>
+										<td>Correo</td>
+										<td>Carrera</td>
 										<td>Acciones</td>
 
 									</tr>
 								</thead>
 								<?php 
-								$sql="SELECT alumnos.idalumno as id, alumnos.nombre as nombre, alumnos.apellido as apellido, oferta_academica.nombre as carrera 
+								$sql="SELECT alumnos.idalumno as idalumno, alumnos.nombre as nombre, alumnos.segundoNombre as segundonombre, alumnos.apellido as apellido, alumnos.segundoApellido as segundoapellido, alumnos.sexo as sexo, alumnos.telefono as telefono, alumnos.correo as correo,oferta_academica.nombre as carrera 
                                 from alumnos, oferta_alumnos, oferta_academica, coordinadores
                                 where alumnos.idalumno=oferta_alumnos.idalumno and oferta_alumnos.idcarrera=oferta_academica.idcarrera and coordinadores.idcarrera=oferta_academica.idcarrera and coordinadores.idcoordinador='$usuario';";
 								$result=mysqli_query($conexion,$sql);
@@ -56,14 +61,19 @@
 									echo "
 									<tbody>
 									<tr>
-									<td>".$mostrar['id']."</td>
+									<td>".$mostrar['idalumno']."</td>
 									<td>".$mostrar['nombre']."</td>
-                                    <td>".$mostrar['apellido']."</td>
+									<td>".$mostrar['segundonombre']."</td>
+									<td>".$mostrar['apellido']."</td>
+									<td>".$mostrar['segundoapellido']."</td>
+									<td>".$mostrar['sexo']."</td>
+									<td>".$mostrar['telefono']."</td>
+									<td>".$mostrar['correo']."</td>
                                     <td>".$mostrar['carrera']."</td>
 								
 									<td>
 									<button >
-									<a href='info.php?id=$mostrar[id]&nom=$mostrar[nombre]&ap=$mostrar[apellido]'>Info</a>
+									<a href='info.php?id=$mostrar[idalumno]&nom=$mostrar[nombre]&ap=$mostrar[apellido]'>Info</a>
 									</button>
 									</td>
 									

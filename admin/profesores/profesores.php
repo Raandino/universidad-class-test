@@ -35,7 +35,12 @@ validaradmin($usuario,$conexion);
 								<tr>
 									<td>ID</td>
 									<td>Nombre</td>
+									<td>Segundo Nombre</td>
 									<td>Apellido</td>
+									<td>Segundo Apellido</td>
+									<td>Sexo</td>
+									<td>Telefono</td>
+									<td>Correo</td>
 									<td>Acciones</td>
 										
 								</tr>
@@ -51,11 +56,16 @@ validaradmin($usuario,$conexion);
 								<tr>
 								<td>".$mostrar['iddocente']."</td>
 								<td>".$mostrar['nombre']."</td>
+								<td>".$mostrar['segundoNombre']."</td>
 								<td>".$mostrar['apellido']."</td>
+								<td>".$mostrar['segundoApellido']."</td>
+								<td>".$mostrar['sexo']."</td>
+								<td>".$mostrar['telefono']."</td>
+								<td>".$mostrar['correo']."</td>
 
 								<td>
 								<button >
-								<a  href='updateprofes.php?rn=$mostrar[iddocente]&sn=$mostrar[nombre]&cl=$mostrar[apellido]'>Editar</a>
+								<a  href='updateprofes.php?rn=$mostrar[iddocente]&sn=$mostrar[nombre]&cl=$mostrar[apellido]&ndos=$mostrar[segundoNombre]&ados=$mostrar[segundoApellido]&sexo=$mostrar[sexo]&telefono=$mostrar[telefono]&correo=$mostrar[correo]'>Editar</a>
 								</button>
 
 								<button class='pop-up-del'>Borrar<p>".$mostrar['iddocente']."</p></button>
@@ -85,36 +95,8 @@ validaradmin($usuario,$conexion);
 				
 				</div>
 			
-			<div class="form col">
-			<h2>Registrar</h2>	
-				<form action="insertprofes.php" method="POST" autocomplete="off" pattern="\S">
-					<p>ID Docente</p>
-					
-					<br>
-					<input type="text" name="iddocente" placeholder="ID" maxlength="14" pattern="^([0-9]{13})([A-Z]{1})$" required oninvalid="this.setCustomValidity('Se requieren 13 digitos y 1 letra mayuscula')">
-					<p>Nombre</p>
-					
-					<br>
-					<input type="text" name="nombre" placeholder="Primer nombre" maxlength="45">
-					<p>Apellido</p>
-					
-					<br>
-					<input type="text" name="apellido" placeholder="Apellido" maxlength="45">
-					<br>
-					<br>
-
-					<div class="pop-up">
-						<div >
-							<p>¿Esta seguro?</p>
-							<input href='insertcarrera.php' type="submit" value="Confirmar">
-							<br>
-							<br>
-							<input class= "pop-up-cancel" type="button" value="Cancelar">
-						</div>
-					</div>
-				</form>
-				<button class="pop-up-activate">Enviar</button>
-			</div>
+			<div >
+			<button class="registraralumno"><a href='nuevoprofe.php'>Nuevo Docente</a></button>
 	</div>
 	</div>
 	<?php

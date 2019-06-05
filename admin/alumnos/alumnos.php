@@ -29,7 +29,7 @@
 	<?php include ('../../sidebar.php')?>
 
 			<div id="main">
-
+		
 					<div class="contenedor-tabla"> 
 						<h2>Tabla Alumnos</h2>
 						<input type="text" name="search" id="search" class="form-control" placeholder="Buscar en tabla" />  
@@ -40,13 +40,18 @@
 									<tr>
 										<td >CIF</td>
 										<td>Nombre</td>
+										<td>Segundo Nombre</td>
 										<td>Apellido</td>
+										<td>Segundo Apellido</td>
+										<td>Sexo</td>
+										<td>Telefono</td>
+										<td>Correo</td>
 										<td>Carrera</td>
 										<td>Acciones</td>	
 									</tr>
 								</thead>
 								<?php 
-								$sql="SELECT alumnos.idalumno as idalumno, alumnos.nombre as nombre, alumnos.apellido as apellido, oferta_academica.nombre as carrera
+								$sql="SELECT alumnos.idalumno as idalumno, alumnos.nombre as nombre, alumnos.segundoNombre as segundonombre, alumnos.apellido as apellido, alumnos.segundoApellido as segundoapellido, alumnos.sexo as sexo, alumnos.telefono as telefono, alumnos.correo as correo, oferta_academica.nombre as carrera, oferta_academica.idcarrera as idcarrera
 								from alumnos, oferta_alumnos, oferta_academica 
 								where alumnos.idalumno=oferta_alumnos.idalumno and oferta_alumnos.idcarrera=oferta_academica.idcarrera;";
 								$result=mysqli_query($conexion,$sql);
@@ -57,13 +62,18 @@
 									<tr>
 									<td>".$mostrar['idalumno']."</td>
 									<td>".$mostrar['nombre']."</td>
+									<td>".$mostrar['segundonombre']."</td>
 									<td>".$mostrar['apellido']."</td>
+									<td>".$mostrar['segundoapellido']."</td>
+									<td>".$mostrar['sexo']."</td>
+									<td>".$mostrar['telefono']."</td>
+									<td>".$mostrar['correo']."</td>
 									<td>".$mostrar['carrera']."</td>
 
 									<td>
 				
-									<button >
-									<a  href='update.php?rn=$mostrar[idalumno]&sn=$mostrar[nombre]&cl=$mostrar[apellido]&car=$mostrar[carrera]'>Editar</a>
+									<button  >
+									<a  href='update.php?rn=$mostrar[idalumno]&sn=$mostrar[nombre]&cl=$mostrar[apellido]&car=$mostrar[idcarrera]&nom=$mostrar[carrera]&ndos=$mostrar[segundonombre]&ados=$mostrar[segundoapellido]&sexo=$mostrar[sexo]&telefono=$mostrar[telefono]&correo=$mostrar[correo]'>Editar</a>
 									</button>
 
 									<button class='pop-up-del' >Borrar<p>".$mostrar['idalumno']."</p></button>
@@ -72,7 +82,7 @@
 											<div class='pop-up-borrar'>
 											<div>
 											<p>¿Esta seguro?</p>
-											<button>
+											<button >
 											   <a class='toDelete' href='delete.php?rn=replace'>Confirmar</a>
 											   </button>
 											   <br>
@@ -95,62 +105,8 @@
 					
 					</div>
 				
-				<div class="form col">
-				<h2>Registrar</h2>	
-				<form action="guardar.php" method="POST" autocomplete="off" pattern="\S">
-					<p>CIF</p>
-					
-					<br>
-					<input type="text" name="cif" placeholder="CIF" maxlength="8" pattern="^[0-9]*$" required oninvalid="this.setCustomValidity('Solo se aceptan numeros')">
-					<p>Nombre</p>
-					
-					<br>
-					<input type="text" name="nombre" placeholder="Primer nombre" maxlength="25"  required>
-					<br>
-					<br>
-					<input type="text" name="apellido" placeholder="Apellido" maxlength="25" required>
-						<br>
-						<br>
-						<p>Seleccione una carrera</p>
-						<select name="carrera" required flex>
-                        <option >
-						</option>
-							<?php 
-									$sql="SELECT * from oferta_academica";
-									$result=mysqli_query($conexion,$sql);
-								
-									
-									while($ensenar=mysqli_fetch_array($result)){
-										echo "
-									
-											<option >".$ensenar['nombre']."</option>
-										
-									"
-											
-									?>
-									<?php 
-								}
-								?>	
-							</select>
-
-						<br>
-
-						<div class="pop-up">
-							<div >
-							<p>¿Esta seguro?</p>
-							<input href='guardar.php' type="submit" value="Confirmar">
-							
-							<br>
-							<input class= "pop-up-cancel" type="button" value="Cancelar">
-							</div>
-						</div>
-						
-
-
-						
-					</form>
-					<br>
-					<button class="pop-up-activate">Enviar</button>
+				<div >
+					<button class="registraralumno"><a href='nuevoalumno.php'>Nuevo Alumno</a></button>			
 				</div>
 			
 		</div>

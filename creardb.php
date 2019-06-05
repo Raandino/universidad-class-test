@@ -1,6 +1,6 @@
 <?php
 
-$link = mysqli_connect("localhost", "root", "");
+$link = mysqli_connect("localhost:3307", "root", "");
  
 // Check connection
 if($link === false){
@@ -15,7 +15,7 @@ if(mysqli_query($link, $base)){
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
 
-$conn = mysqli_connect("localhost", "root", "", "universidad");
+$conn = mysqli_connect("localhost:3307", "root", "", "universidad");
 
 //tabla facultades
 $facultades= "CREATE table if not exists facultades(
@@ -52,7 +52,12 @@ $oferta= "CREATE table if not exists oferta_academica(
  $coord= "CREATE table if not exists coordinadores(
     idcoordinador varchar(10) not null, 
     nombre varchar (45) not null, 
-    apellido varchar(45),
+    segundoNombre varchar(45),
+        apellido varchar(45) not null,
+        segundoApellido varchar(45) not null,
+        sexo enum('Masculino','Femenino','Indefinido') not null,
+        correo varchar (45) not null,
+        telefono varchar(11) not null ,
     idcarrera mediumint not null,
     primary key (idcoordinador,idcarrera),
     foreign key (idcarrera) references oferta_academica(idcarrera)
@@ -68,8 +73,13 @@ if (mysqli_query($conn, $coord)) {
     $alumnos= "CREATE table if not exists alumnos(
         idalumno varchar(10) not null,
         primary key (idalumno), 
-        nombre varchar (45) not null, 
-        apellido varchar(45)
+        nombre varchar (45) not null,
+        segundoNombre varchar (45), 
+        apellido varchar(45) not null,
+        segundoApellido varchar (45) not null,
+        sexo enum('Masculino','Femenino','Indefinido') not null,
+        correo varchar (45) not null,
+        telefono varchar(11) not null
         )Engine= innodb;";
      
     if (mysqli_query($conn, $alumnos)) {
@@ -176,7 +186,12 @@ if (mysqli_query($conn, $coord)) {
         iddocente varchar(15) not null, 
         primary key (iddocente),
         nombre varchar (45) not null,
-        apellido varchar(45) not null 
+        segundoNombre varchar(45),
+        apellido varchar(45) not null,
+        segundoApellido varchar(45) not null,
+        sexo enum('Masculino','Femenino','Indefinido') not null,
+        correo varchar (45) not null,
+        telefono varchar(11) not null 
         )Engine= innodb;";
      
        if (mysqli_query($conn, $docentes)) {
@@ -244,72 +259,51 @@ if (mysqli_query($conn, $coord)) {
             echo "Error al crear la tabla: " . mysqli_error($conn);
         }  
 
-
-
-        //Creacion cuenta admin 
-       $admin= "INSERT into login (usuario, clave, cargo) values ('admin','root', 'admin');";
+         //tabla alumnos-inactivos
+       $alumnosInactivos= "CREATE table if not exists alumnosInactivos(
+        idalumno varchar(8) not null, 
+        primary key (idalumno),
+        nombre varchar (45) not null,
+        apellido varchar(45) not null,
+        segundoNombre varchar (45), 
+        segundoApellido varchar (45) not null,
+        sexo enum('Masculino','Femenino','Indefinido') not null,
+        correo varchar (45) not null,
+        telefono varchar(11) not null
+        )Engine= innodb;";      
      
-       if (mysqli_query($conn, $admin)) {
+       if (mysqli_query($conn, $alumnosInactivos)) {
        } else {
-           echo "Error poner el registro" . mysqli_error($conn);
-       } 
-
-
-       //insertar facultades
-       $ingenieria= "INSERT into facultades values ('F-ING','Facultad de Ingenieria');";
-       if (mysqli_query($conn, $ingenieria)) {
-       } else {
-           echo "Error poner el registro" . mysqli_error($conn);
-       } 
-       $fcae= "INSERT into facultades values ('F-CAE','Facultad de Ciencias Administrativas y Economicas');";
-       if (mysqli_query($conn, $fcae)) {
-       } else {
-           echo "Error poner el registro" . mysqli_error($conn);
-       } 
-       $fmdc= "INSERT into facultades values ('F-MDC','Facultad de Marketing, Diseño y Comunicacion');";
-       if (mysqli_query($conn, $fmdc)) {
-       } else {
-           echo "Error poner el registro" . mysqli_error($conn);
-       } 
-       $fcjur= "INSERT into facultades values ('F-CJYR','Facultad de Ciencias Juridicas y Relaciones Internacionales');";
-       if (mysqli_query($conn, $fcjur)) {
-       } else {
-           echo "Error poner el registro" . mysqli_error($conn);
-       } 
-       $ucol= "INSERT into facultades values ('F-UCOL','UAM COLLEGE');";
-       if (mysqli_query($conn, $ucol)) {
-       } else {
-           echo "Error poner el registro" . mysqli_error($conn);
-       } 
-       /*Registro de dos carreras*/ 
-       $isis= "INSERT into oferta_academica(idoferta, nombre, tipo, idfacultad) values ('I-SIS','Ingenieria en Sistemas', 'Pregrado','F-ING');";
-       if (mysqli_query($conn, $isis)) {
-       } else {
-           echo "Error poner el registro" . mysqli_error($conn);
-       }
-       $mark= "INSERT into oferta_academica(idoferta, nombre, tipo, idfacultad) values ('MARK','Marketing', 'Pregrado','F-MDC');";
-       if (mysqli_query($conn, $mark)) {
-       } else {
-           echo "Error poner el registro" . mysqli_error($conn);
-       }
-
-       //Registro de 3 materias
-       $mat= "INSERT into materias(codigo, nombre) values ('MTM','Matematica Basica' );";
-       if (mysqli_query($conn, $mat)) {
-       } else {
-           echo "Error poner el registro" . mysqli_error($conn);
-       }
-       $log= "INSERT into materias(codigo, nombre) values ('SIS101','Logica y Algoritmo' );";
-       if (mysqli_query($conn, $log)) {
-       } else {
-           echo "Error poner el registro" . mysqli_error($conn);
+           echo "Error al crear la tabla: " . mysqli_error($conn);
        }
        
-       $prinma= "INSERT into materias(codigo, nombre) values ('MA101','Fundamentos de Marketing' );";
-       if (mysqli_query($conn, $prinma)) {
-       } else {
-           echo "Error poner el registro" . mysqli_error($conn);
-       }
+         //tabla carrera-inactivos
+         $carrerainactivos= "CREATE table if not exists carrera_inactivos(
+            idcarrera mediumint not null,
+            idalumno varchar(8) not null, 
+            primary key (idalumno, idcarrera)
+            )Engine= innodb;";
+         
+           if (mysqli_query($conn, $carrerainactivos)) {
+           } else {
+               echo "Error al crear la tabla: " . mysqli_error($conn);
+           }  
+
+          //tabla notasalumnos-inactivos
+          $notasalumnosInactivos= "CREATE table if not exists notasAlumnosInactivos(
+            idalumno varchar(8) not null, 
+            idmateria mediumint not null,
+            primary key (idalumno, idmateria),
+            notas double not null
+            )Engine= innodb;";
+         
+           if (mysqli_query($conn, $notasalumnosInactivos)) {
+           } else {
+               echo "Error al crear la tabla: " . mysqli_error($conn);
+           }  
+
+
+       
 
           //trigger para insertar coordinadores en la tabla login
           $cuentacoord= "
@@ -361,24 +355,6 @@ if (mysqli_query($conn, $coord)) {
     } else {
         echo "Error al crear la tabla: " . mysqli_error($conn);
     }  
-
-
-
-        //trigger para borrar cuentas de alumnos -->login 
-        $borrarcuentas= "
-        
-        CREATE trigger borrar_alumnos after delete on alumnos
-        for each row
-        begin
-        delete from login where usuario = old.idalumno;
-        
-        END;
-        ";
-     
-       if (mysqli_query($conn, $borrarcuentas)) {
-       } else {
-           echo "Error al crear la tabla: " . mysqli_error($conn);
-       }  
 
     
         //trigger para insertar profesores en la tabla docentes
@@ -444,6 +420,109 @@ if (mysqli_query($conn, $coord)) {
     } else {
         echo "Error al crear la tabla: " . mysqli_error($conn);
     }  
+
+       //trigger cuando se borran alumnos 
+       $trigalumnos= "
+          
+       CREATE trigger alumnos_inactivos before delete on alumnos
+       for each row
+       begin
+       delete from materias_alumnos where idalumno = old.idalumno;
+       delete from oferta_alumnos where idalumno = old.idalumno; 
+       delete from notas where idalumno =old.idalumno;
+       delete from login where usuario = old.idalumno;
+       insert into alumnosInactivos (idalumno, nombre, apellido, segundoNombre, segundoApellido, telefono, correo, sexo) values (old.idalumno, old.nombre, old.apellido, old.segundoNombre, old.segundoApellido, old.telefono, old.correo, old.sexo);
+       END;
+       ";
+    
+      if (mysqli_query($conn, $trigalumnos)) {
+      } else {
+          echo "Error al crear la tabla: " . mysqli_error($conn);
+      }  
+
+        //trigger cuando se borran alumnos de su carrera 
+        $carrera_alumnos= "
+          
+        CREATE trigger alumnos_carrera before delete on oferta_alumnos
+        for each row
+        begin
+        insert into carrera_inactivos (idalumno, idcarrera) values (old.idalumno, old.idcarrera);
+        END;
+        ";
+     
+       if (mysqli_query($conn, $carrera_alumnos)) {
+       } else {
+           echo "Error al crear la tabla: " . mysqli_error($conn);
+       }
+
+        //trigger cuando se borran alumnos de su carrera 
+        $notas_alumnosinactivos= "
+          
+        CREATE trigger notas_alumnosInactivos before delete on notas
+        for each row
+        begin
+        insert into notasAlumnosInactivos (idalumno, idmateria, notas) values (old.idalumno, old.idmateria, old.nota);
+        END;
+        ";
+     
+       if (mysqli_query($conn, $notas_alumnosinactivos)) {
+       } else {
+           echo "Error al crear la tabla: " . mysqli_error($conn);
+       }
+
+
+       //Rematricula de alumnos
+
+        $rematricula= "
+          
+        CREATE trigger rematricula_alumnos before delete on alumnosInactivos
+        for each row
+        begin
+        insert into alumnos (idalumno, nombre, apellido, segundoNombre, segundoApellido, telefono, correo, sexo) values (old.idalumno, old.nombre, old.apellido, old.segundoNombre, old.segundoApellido, old.telefono, old.correo, old.sexo);
+        delete from carrera_inactivos where idalumno = old.idalumno;
+        delete from notasAlumnosInactivos where idalumno = old.idalumno; 
+
+        
+        END;
+        ";
+     
+       if (mysqli_query($conn, $rematricula)) {
+       } else {
+           echo "Error al crear la tabla: " . mysqli_error($conn);
+       }  
+ 
+         //trigger cuando se rematriculan alumnos
+         $rematriculacarrera_alumnos= "
+           
+         CREATE trigger rematriculaalumnos_carrera before delete on carrera_inactivos
+         for each row
+         begin
+         insert into oferta_alumnos (idalumno, idcarrera) values (old.idalumno, old.idcarrera);
+         END;
+         ";
+      
+        if (mysqli_query($conn, $rematriculacarrera_alumnos)) {
+        } else {
+            echo "Error al crear la tabla: " . mysqli_error($conn);
+        }
+ 
+         //trigger cuando se borran alumnos de su carrera 
+         $remanotas_alumnosinactivos= "
+           
+         CREATE trigger remanotas_alumnosInactivos before delete on notasAlumnosInactivos
+         for each row
+         begin
+         insert into notas (idalumno, idmateria, nota) values (old.idalumno, old.idmateria, old.notas);
+         END;
+         ";
+      
+        if (mysqli_query($conn, $remanotas_alumnosinactivos)) {
+        } else {
+            echo "Error al crear la tabla: " . mysqli_error($conn);
+        }
+ 
+
+
 
        header("Location: http://localhost:8080/formulario/Login/login.php");
 

@@ -5,6 +5,12 @@ error_reporting(0);
 $_GET['rn'];
 $_GET['sn'];
 $_GET['cl'];
+$_GET['ndos']; //segundo nombre
+$_GET['ados']; //segundo apellido
+$_GET['sexo']; //sexo
+$_GET['telefono']; //telefono
+$_GET['correo']; //correo
+$_GET['cl']; //apellido
 
 ?>
 
@@ -31,15 +37,26 @@ $_GET['cl'];
         <p> <?php echo $_GET['rn']; ?> </p>
         <br>
         
-		<p>Nombre</p>
-		<br>
+		<p>Nombres</p>
+		
         <input type="text" name="nombre" placeholder="Primer nombre" maxlength="45" required value="<?php echo $_GET['sn']; ?>">
-        
-		<p>Apellido</p>
-		<br>
+        <br><br>
+        <input type="text" name="segundoNombre" placeholder="Segundo nombre" maxlength="25" pattern="[A-Za-z]+" required required value="<?php echo $_GET['ndos']; ?>">
+        <br><br>
+
+		<p>Apellidos</p>
 		<input type="text" name="apellido" placeholder="Apellido" maxlength="45" required value="<?php echo $_GET['cl']; ?>">
-		<br>
-		<br>
+		<br><br>
+        <input type="text" name="segundoapellido" placeholder="Apellido" maxlength="45" required value="<?php echo $_GET['ados']; ?>">
+        <br><br>
+
+        <p>Telefono</p>
+		<input type="text" name="telefono"  maxlength="11" pattern="[0-9]{11}" required value="<?php echo $_GET['telefono']; ?>">
+		<br><br>
+
+        <p>Correo</p>
+		<input type="email" name="correo"  maxlength="45" required value="<?php echo $_GET['correo']; ?>">
+		<br><br>
 		<div class="pop-up">
 			<div >
 				<p>¿Esta seguro?</p>
@@ -57,9 +74,16 @@ $_GET['cl'];
         {
             $iddocente = $_GET['iddocente'];
             $nombre = $_GET['nombre'];
+            $segundonombre = $_GET['segundoNombre'];
             $apellido = $_GET['apellido'];
+            $segundoapellido = $_GET['segundoapellido'];
+            $telefono = $_GET['telefono'];
+            $correo = $_GET['correo'];
+            $carrera = $_GET['carrera'];
 
-            $query ="UPDATE docentes SET  nombre= '$nombre', apellido='$apellido' WHERE iddocente='$iddocente' or nombre= '$nombre' or apellido='$apellido'  ";
+
+
+            $query ="UPDATE docentes SET   nombre= '$nombre', apellido='$apellido', segundoNombre='$segundonombre', segundoApellido='$segundoapellido', correo='$correo', telefono='$telefono' WHERE iddocente='$iddocente' or nombre= '$nombre' or apellido='$apellido'  ";
             $data = mysqli_query($conexion, $query);
             if($data)
             {

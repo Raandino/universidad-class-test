@@ -93,8 +93,11 @@ $usuario = $_SESSION['usuario']; //id del alumno
 				
 				}
 	}
-	else{ echo"No ha aprobado el prerequisito para esta clase"; }
+	else
+	{ 
+		header("Location: http://localhost:8080/formulario/LoginAlumnos/inscribirMat/inscribirMat.php?fallo3=true");//No ha aprobado el prerequisito para esta clase
 	}
+}
 
 
 

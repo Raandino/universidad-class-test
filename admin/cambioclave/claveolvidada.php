@@ -23,12 +23,14 @@ validaradmin($usuario,$conexion);
     <title>Resetear Contraseña</title>
     </head>
     <body >
+    
             <br>
             <br>
     
         <h2 id="h2conf">Resetear Contraseña</h2>
         <br>
     <div class="formcontra col" >
+    
     <form id='reseteo' action="updateclave.php" method="POST" autocomplete="off" pattern="\S">
 					<p>Usuario</p>
 					

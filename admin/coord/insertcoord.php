@@ -5,7 +5,12 @@ include('../../Login/iniciar.php');
 	//recuperar las variables
 	$id=$_POST['id'];
 	$nombre=$_POST['nombre'];
+	$segundonombre=$_POST['segundoNombre'];
 	$apellido=$_POST['apellido'];
+	$segundoapellido=$_POST['segundoApellido'];
+	$sexo=$_POST['sexo'];
+	$correo=$_POST['correo'];
+	$celular=$_POST['celular'];
 	$carrera=$_POST['carrera'];
 
 	//Recuperamos el idcarrera, ya que el usuario ingresa
@@ -15,7 +20,7 @@ include('../../Login/iniciar.php');
 	$idcarrera= $array['idcarrera'];
 
 	//hacemos la sentencia de sql
-	$sql="INSERT into coordinadores VALUES('$id','$nombre','$apellido','$idcarrera')";
+	$sql="INSERT into coordinadores (idcoordinador, nombre, segundoNombre, apellido, segundoApellido, sexo, telefono, correo, idcarrera) VALUES('$id','$nombre', '$segundonombre' ,'$apellido','$segundoapellido','$sexo', '$celular', '$correo',   '$idcarrera')";
 	
 	//verificamos la ejecucion
 

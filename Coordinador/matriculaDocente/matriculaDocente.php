@@ -226,6 +226,16 @@ $idcar= $array['idcarrera'];
                     <input class='pop-up-cancel' type='button' value='Confirmar'>
                 </div>
             </div> ";
+	   }
+	   if(isset($_GET["fallo4"]) && $_GET["fallo4"] == 'true')
+       {
+          echo "
+            <div class='pop-up-error'>
+                <div>
+                    <p>El grupo de la clase seleccionada no existe</p>
+                    <input class='pop-up-cancel' type='button' value='Confirmar'>
+                </div>
+            </div> ";
        }
      ?>
 

@@ -6,7 +6,12 @@ error_reporting(0);
 $_GET['rn']; //idcoordinador
 $_GET['sn']; //nombre
 $_GET['cl']; //apellido
-$_GET['car']; //nombre de la carrera
+$_GET['ndos']; //segundo nombre
+$_GET['ados']; //segundo apellido
+$_GET['sexo']; //sexo
+$_GET['telefono']; //telefono
+$_GET['correo']; //correo
+$nombrecarrera =$_GET['car']; //nombre de la carrera
 
 
 ?>
@@ -34,16 +39,49 @@ $_GET['car']; //nombre de la carrera
         <input class="idnone" type="text" name="id" placeholder="CIF" maxlength="8" required value="<?php echo $_GET['rn']; ?>">
         <p><?php echo $_GET['rn']; ?></p>
         <br>
-        
-		<p>Nombre</p>
-		<br>
+        <p>Nombres</p>
+		
         <input type="text" name="nombre" placeholder="Primer nombre" maxlength="45" required value="<?php echo $_GET['sn']; ?>">
-        
-		<p>Apellido</p>
-		<br>
+        <br><br>
+        <input type="text" name="segundoNombre" placeholder="Segundo nombre" maxlength="25" pattern="[A-Za-z]+" required required value="<?php echo $_GET['ndos']; ?>">
+        <br><br>
+
+		<p>Apellidos</p>
 		<input type="text" name="apellido" placeholder="Apellido" maxlength="45" required value="<?php echo $_GET['cl']; ?>">
-		<br>
-        <br>
+		<br><br>
+        <input type="text" name="segundoapellido" placeholder="Apellido" maxlength="45" required value="<?php echo $_GET['ados']; ?>">
+        <br><br>
+
+        <p>Telefono</p>
+		<input type="text" name="telefono"  maxlength="11" pattern="[0-9]{11}" required value="<?php echo $_GET['telefono']; ?>">
+		<br><br>
+
+        <p>Correo</p>
+		<input type="email" name="correo"  maxlength="45" required value="<?php echo $_GET['correo']; ?>">
+		<br><br>
+        
+
+        <p>Carrera</p>
+						<select name="carrera" required flex>
+                        <option><?php echo $nombrecarrera ?>
+						</option>
+							<?php 
+									$sql="SELECT * from oferta_academica";
+									$result=mysqli_query($conexion,$sql);
+								
+									
+									while($ensenar=mysqli_fetch_array($result)){
+										echo "
+                                        
+											<option>".$ensenar['nombre']."</option>
+										
+									"
+											
+									?>
+									<?php 
+								}
+								?>	
+							</select>
         <div class="pop-up">
 			<div >
 				<p>¿Esta seguro?</p>
@@ -59,16 +97,24 @@ $_GET['car']; //nombre de la carrera
     <?php
         if($_GET['submit'])
         {
+            $idcoord = $_GET['id'];
+            $nombre = $_GET['nombre'];
+            $apellido = $_GET['apellido'];
+            $nombre = $_GET['nombre'];
+            $segundonombre = $_GET['segundoNombre'];
+            $apellido = $_GET['apellido'];
+            $segundoapellido = $_GET['segundoapellido'];
+            $telefono = $_GET['telefono'];
+            $correo = $_GET['correo'];
+            $carrera = $_GET['carrera']; 
+
         $recuperarID="SELECT idcarrera as idcarrera from oferta_academica where nombre='$carrera'";
 	    $consulta = mysqli_query($conexion, $recuperarID);
 	    $array = mysqli_fetch_array($consulta);
         $idcarrera= $array['idcarrera'];
     
-            $idcoord = $_GET['id'];
-            $nombre = $_GET['nombre'];
-            $apellido = $_GET['apellido'];
            
-            $query ="UPDATE coordinadores SET  nombre= '$nombre', apellido='$apellido' WHERE idcoordinador='$idcoord' OR nombre='$nombre' or apellido ='$apellido' ";
+            $query ="UPDATE coordinadores SET  nombre= '$nombre', apellido='$apellido', segundoNombre='$segundonombre', segundoApellido='$segundoapellido', correo='$correo', telefono='$telefono', idcarrera='$idcarrera' WHERE idcoordinador='$idcoord'";
            
 
             //$data = mysqli_query($conexion, $sqk) && mysqli_query($conexion, $query);

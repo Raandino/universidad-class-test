@@ -12,6 +12,21 @@
     
     pointer-events: all;
 }
+.pop-up-sesion {
+    display: none;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.808);
+    display: none;
+    
+    pointer-events: all;
+}
 .pop-up-activate{
     display: inline;
 }

@@ -28,7 +28,7 @@ $_GET['dia'];   //Dia de la materia
     </div>
         <h1 id="h1conf">Actualizar tabla Materias</h1>
         <br>
-    <div class="form col" >
+    <div class="formcontra" >
     <form action="" method="GET" autocomplete="off"  >
 		<p>Codigo: 
         <input class="idnone" type="text" name="idmateria" placeholder="idmateria" maxlength="8" required value="<?php echo $_GET['rn']; ?>" >

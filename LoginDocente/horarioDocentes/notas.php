@@ -42,8 +42,11 @@ $recuperarID="SELECT idmateria as idmateria from materias where nombre='$materia
 					<table class="tabla" id="buscador">
 						<thead>
                             <tr>
+								<td>CIF</td>
                                 <td>Nombre</td>
+								<td>Segundo Nombre</td>
                                 <td>Apellido</td>
+								<td>Segundo Apellido</td>
                                 <td>Materia</td>
                                 <td>Grupo</td>
 								<td>Nota</td>
@@ -54,7 +57,7 @@ $recuperarID="SELECT idmateria as idmateria from materias where nombre='$materia
                             </tr>
 						</thead>
                         <?php 
-                        $sql="SELECT distinct alumnos.nombre as alumno, alumnos.idalumno as id, alumnos.apellido as apellido, materias.nombre as materia,materias.idmateria as idmateria,notas.idgrupo as grupo, notas.nota as nota
+                        $sql="SELECT distinct alumnos.nombre as alumno, alumnos.segundoNombre as segundonombre, alumnos.idalumno as id, alumnos.apellido as apellido, alumnos.segundoApellido as segundoapellido, materias.nombre as materia,materias.idmateria as idmateria,notas.idgrupo as grupo, notas.nota as nota
 						from notas , materias, alumnos, materia_docente
 						where notas.idmateria=materias.idmateria and notas.idalumno = alumnos.idalumno and materia_docente.idmateria=materias.idmateria and
 						materia_docente.iddocente ='$usuario' and notas.idmateria='$idmateria' and notas.idgrupo='$grupo';";
@@ -65,8 +68,11 @@ $recuperarID="SELECT idmateria as idmateria from materias where nombre='$materia
 							
 							<tbody>
 							<tr>
-                            <td>".$mostrar['alumno']."</td>
-                            <td>".$mostrar['apellido']."</td>
+							<td>".$mostrar['id']."</td>
+							<td>".$mostrar['alumno']."</td>
+							<td>".$mostrar['segundonombre']."</td>
+							<td>".$mostrar['apellido']."</td>
+							<td>".$mostrar['segundoapellido']."</td>
                             <td>".$mostrar['materia']."</td>
 							<td>".$mostrar['grupo']."</td>
                             <td>".$mostrar['nota']."</td>
@@ -76,7 +82,7 @@ $recuperarID="SELECT idmateria as idmateria from materias where nombre='$materia
 							<input type='text' name='idmateria' id='hidden' value=".$mostrar['idmateria']." > 
 							<input type='text' name='nombreMateria' id='hidden' value='$materia' >
 							 
-							<input type='number' name='nota'required> 
+							<input type='number' step='0.01' min='0' max='100' name='nota'required> 
 							<button type='submit'>
 							Devolver Nota
 							</button>

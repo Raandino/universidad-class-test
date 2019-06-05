@@ -59,6 +59,7 @@ $nombre= $arrayd['nombre'];
 	 }
 	 
 	?>
+	
 
 
 		</body>

@@ -27,7 +27,7 @@ validaradmin($usuario,$conexion);
 
 		<div id="main">
 				<div class="contenedor-tabla"> 
-					<h2>Facultades y Carreras</h2>
+					<h2>Carreras</h2>
 					<input type="text" name="search" id="search" class="form-control" placeholder="Buscar en tabla" />  
 					<br>
 					<div class ='tableFixHead scroll' >

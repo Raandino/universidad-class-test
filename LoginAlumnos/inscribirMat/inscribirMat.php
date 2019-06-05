@@ -123,7 +123,7 @@ $idcarrera= $array['idcarrera'];
           echo "
             <div class='pop-up-error'>
                 <div>
-                    <p>Hubo Un Error Al Borrar</p>
+                    <p>No se ha aprobado el prerequisito de esta clase</p>
                     <input class='pop-up-cancel' type='button' value='Confirmar'>
                 </div>
             </div> ";

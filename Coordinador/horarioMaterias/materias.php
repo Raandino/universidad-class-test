@@ -198,7 +198,28 @@ $idcar= $array['idcarrera'];
                     <input class='pop-up-cancel' type='button' value='Confirmar'>
                 </div>
             </div> ";
-       }
+	   }
+	   if(isset($_GET["fallo3"]) && $_GET["fallo3"] == 'true')
+       {
+          echo "
+            <div class='pop-up-error'>
+                <div>
+                    <p>Horas no son validas</p>
+                    <input class='pop-up-cancel' type='button' value='Confirmar'>
+                </div>
+            </div> ";
+	   }
+	   if(isset($_GET["fallo4"]) && $_GET["fallo4"] == 'true')
+       {
+          echo "
+            <div class='pop-up-error'>
+                <div>
+                    <p>Aula seleccionada esta ocupada durante esas horas</p>
+                    <input class='pop-up-cancel' type='button' value='Confirmar'>
+                </div>
+            </div> ";
+	   }
+	   
      ?>
 
 

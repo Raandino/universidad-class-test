@@ -61,7 +61,7 @@ include('../../conexion.php');
 	}
 	else 
 	{
-		echo"El grupo de la materia seleccionada no existe";
+		header("Location: http://localhost:8080/formulario/Coordinador/matriculaDocente/matriculaDocente.php?fallo4=true");//El grupo de la materia seleccionada no existe
 	}
 
 

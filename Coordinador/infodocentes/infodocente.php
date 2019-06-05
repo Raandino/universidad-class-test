@@ -40,7 +40,12 @@
 									<tr>
 										<td>Id Docente</td>
 										<td>Nombre</td>
+										<td>Segundo Nombre</td>
 										<td>Apellido</td>
+										<td>Segundo Apellido</td>
+										<td>Sexo</td>
+										<td>Telefono</td>
+										<td>Correo</td>
                                        
 										<td>Acciones</td>
 
@@ -55,9 +60,13 @@
 									<tbody>
 									<tr>
 									<td>".$mostrar['iddocente']."</td>
-									<td>".$mostrar['nombre']."</td>
-                                    <td>".$mostrar['apellido']."</td>
-                                 
+								<td>".$mostrar['nombre']."</td>
+								<td>".$mostrar['segundoNombre']."</td>
+								<td>".$mostrar['apellido']."</td>
+								<td>".$mostrar['segundoApellido']."</td>
+								<td>".$mostrar['sexo']."</td>
+								<td>".$mostrar['telefono']."</td>
+								<td>".$mostrar['correo']."</td>
 								
 									<td>
 									<button >
