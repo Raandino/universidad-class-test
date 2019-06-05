@@ -14,7 +14,7 @@ $q = "SELECT *from login where usuario = '$usuario' and cargo = 'admin' ";
 $consulta = mysqli_query($conexion, $q);
 $array = mysqli_fetch_array($consulta);
 
-while($array['usuario'] == $usuario && $array['cargo'] == admin){
+while($array['usuario'] == $usuario && $array['cargo'] == 'admin'){
 
 
 if(password_verify ($clave1, $array['clave'])){
