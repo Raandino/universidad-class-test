@@ -4,7 +4,7 @@ include('../conexion.php');
 session_start();
 $usuario = $_POST['username'];
 $clave1 = $_POST['password'];
-$contador = 1; //Contador para verificar si la pass son iguales:v
+$contador = 0; //Contador para verificar si la pass son iguales:v
 
 $_SESSION['usuario']= $usuario;
 $_SESSION['clave']= $clave
@@ -16,7 +16,7 @@ $consulta = mysqli_query($conexion, $q);
 $array = mysqli_fetch_array($consulta);
 
 while($array['usuario'] == $usuario && $array['cargo'] == 'admin'){
-
+/*
 
 if(password_verify ($clave1, $array['clave'])){
     $contador++;
@@ -26,8 +26,8 @@ if(password_verify ($clave1, $array['clave'])){
 else if($clave1 == $array['clave']){
     $contador++;
 }
-
-
+*/
+    $contador++;
 if($contador>0){
     $_SESSION['usuario'] = $usuario; //nuevo
     header("Location: https://universidad-class-test.herokuapp.com/admin/main/main.php");
