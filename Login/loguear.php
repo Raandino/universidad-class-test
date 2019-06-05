@@ -7,7 +7,8 @@ $clave1 = $_POST['password'];
 $contador = 0; //Contador para verificar si la pass son iguales:v
 
 $_SESSION['usuario']= $usuario;
-$_SESSION['clave']= $clave;
+$_SESSION['clave']= $clave1
+;
 
 //Admins
 $q = "SELECT *from login where usuario = '$usuario' and cargo = 'admin' ";
