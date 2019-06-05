@@ -30,11 +30,11 @@ else if($clave1 == $array['clave']){
     $contador++;
 if($contador>0){
     $_SESSION['usuario'] = $usuario; //nuevo
-    header("Location: https://universidad-class-test.herokuapp.com/admin/main/main.php");
+    header("Location:https://universidad-class-test.herokuapp.com/admin/main/main.php");
 }
 
 else{
-    header("Location: https://universidad-class-test.herokuapp.com/Login/login.php?fallo=true");
+    header("Location:https://universidad-class-test.herokuapp.com/Login/login.php?fallo=true");
 }
 }
 
