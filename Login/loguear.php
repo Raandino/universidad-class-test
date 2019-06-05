@@ -17,7 +17,11 @@ $array = mysqli_fetch_array($consulta);
 while($array['usuario'] == $usuario && $array['cargo'] == 'admin'){
 
 
-if(password_verify ($clave1, $array['clave'])){
+//if(password_verify ($clave1, $array['clave'])){
+//    $contador++;
+//}
+
+if($clave1== $array['clave']){
     $contador++;
 }
 
@@ -64,7 +68,7 @@ $q = "SELECT *from login where usuario = '$usuario' and cargo ='profesor'";
 $consulta = mysqli_query($conexion, $q);
 $array = mysqli_fetch_array($consulta);
 
-while($array['usuario'] == $usuario && $array['cargo'] == profesor){
+while($array['usuario'] == $usuario && $array['cargo'] == 'profesor'){
 if(password_verify ($clave1, $array['clave'])){
     $contador++;
 }
@@ -87,7 +91,7 @@ $q = "SELECT *from login where usuario = '$usuario' and cargo ='coord'";
 $consulta = mysqli_query($conexion, $q);
 $array = mysqli_fetch_array($consulta);
 
-while($array['usuario'] == $usuario && $array['cargo'] == coord){
+while($array['usuario'] == $usuario && $array['cargo'] == 'coord'){
 if(password_verify ($clave1, $array['clave'])){
     $contador++;
 }
