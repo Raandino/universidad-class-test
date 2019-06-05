@@ -4,10 +4,10 @@ include('../conexion.php');
 session_start();
 $usuario = $_POST['username'];
 $clave1 = $_POST['password'];
-$contador = 0; //Contador para verificar si la pass son iguales:v
+$contador = 1; //Contador para verificar si la pass son iguales:v
 
 $_SESSION['usuario']= $usuario;
-$_SESSION['clave']= $clave1
+$_SESSION['clave']= $clave
 ;
 
 //Admins
